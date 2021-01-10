@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Puestito</title>
+    <script src="https://kit.fontawesome.com/471047becf.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@400;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="contenedor contenedor-flex header">
+            <div class="logo">
+                <h1><a href="index.html">El Puestito</a></h1>
+
+            </div>
+            <div class="buscador contenedor-flex">
+                <div class="input-search">
+                    <input type="search" name="" id="">
+                </div>
+                <div class="icon-search">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <nav class="navegacion">
+                <ul class="contenedor-flex">
+                    <li><a href="#"><i class="fas fa-tag"></i></a></li>
+                    <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li><a href="#"><i class="fas fa-user"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenedor pagina-cuenta">
+
+        <section>
+            <h2>Detalles de la cuenta</h2>
+            <div class="contenedor-flex detalles-cuenta">
+                <aside>
+                    <div class="profile-img">
+                        <img src="img/avatar-1577909_640.png" alt="">
+                    </div>
+                    <nav class="nav-cuenta">
+                        <a href="#">Ver pedidos</a>
+                        <a href="#">Ver wish list</a>
+                        <a href="#">Cambiar contraseña</a>
+                    </nav>
+                </aside>
+                <form class="formulario-cuenta" action="">
+                    <fieldset>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" value="Jacob">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" name="apellido" id="apellido" value="de Canterbury">
+                        <label for="fecha-nac">Fecha de nacimiento:</label>
+                        <input class="w-35" type="date" name="fecha-nac" id="fecha-nac">
+                        <label for="email">Correo electronico:</label>
+                        <input type="email" name="email" id="email" value="BANOBACOA.J@FAKEMAIL.COM">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Direccion de envio</legend>
+                        <label for="calle">Calle:</label>
+                        <input class="w-35" type="text" name="calle" id="calle" value="BAKER STREET">
+                        <label for="numero">Numero:</label>
+                        <input class="w-15" type="text" name="numero" id="numero" value="221-B">
+                        <label for="ciudad">Ciudad:</label>
+                        <input class="w-35" type="text" name="ciudad" id="ciudad" value="LONDON">
+                        <label for="pais">Pais:</label>
+                        <input class="w-35" type="text" name="pais" id="pais" value="Inglaterra">
+                        <label for="cp">C.P:</label>
+                        <input class="w-15" type="text" name="cp" id="cp" value="1200">
+                    </fieldset>
+                    <div class="submit-contenedor">
+                        <input class="btn btn-detalles-cuenta" type="submit" value="Actualizar datos">
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="site-footer">
+            <p class="logo">El puestito</p>
+            <p>Todos los derechos reservados &copy;</p>
+            <a href="#">Aviso de privacidad </a>
+        </div>
+    </footer>
+</body>
+
+</html>
