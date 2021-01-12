@@ -5,7 +5,7 @@
             <div>
                 <img src="<?php echo URL; ?>public/img/<?php echo $articulo['img_producto'] ?>" alt="<?php echo $articulo['nombre_producto']; ?>">
                 <div class="contenedor-btn">
-                    <a href="#" class="btn">Comprar</a>
+                    <a href="<?php echo URL; ?>checkout#confirma_direccion" class="btn">Comprar</a>
                     <div class="contenedor-flex">
                         <button class="btn">Añadir al carrito</button>
                         <button class="btn">Añadir al wish list</button>
