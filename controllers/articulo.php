@@ -6,6 +6,7 @@ class Articulo extends Controller{
        
         
     }
+    
     function render(){
        $resultado = $this->model->mostrarArticulo($_GET['id']);
        $existe_articulo = $resultado->num_rows;
@@ -21,7 +22,5 @@ class Articulo extends Controller{
         
     }//render
     
-
-
 
 }//Class
