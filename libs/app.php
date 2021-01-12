@@ -15,6 +15,7 @@ class App{
 
             require_once $archivoCrontroller;
             $controller = new Main();
+            $controller->loadModel('Main');
             $controller->render();
             return false;
 
@@ -26,6 +27,7 @@ class App{
         if (file_exists($archivoCrontroller)) {
             require_once $archivoCrontroller;
             $controller = new $url[0];
+            $controller->loadModel($url[0]);
 
             if (isset($url[1])) {
                 $controller->{$url[1]}();
