@@ -1,14 +1,14 @@
 <?php
-class articuloModel{
+class CategoriasModel{
     public function __construct(){
 
     }
 
 
-public function mostrarArticulo($id){
+public function mostrarCategorias(){
     try{
         require 'config/conexion_bd.php';
-        $sql= " SELECT * FROM `productos` WHERE id = $id";
+        $sql= " SELECT * FROM `categorias`";
         $resultado = $conexion->query($sql);
         return $resultado;
         $conexion->close();

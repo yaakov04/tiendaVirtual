@@ -2,30 +2,15 @@
 <main class="contenedor pagina-categorias">
         <h2>Categorias</h2>
         <div class="grid-container categorias">
+
+<?php while($categorias=$this->categorias->fetch_assoc()){ ?>
+
             <a href="#" class="categoria">
-            Electronicos
+            <?php echo $categorias['categoria'] ?>
             </a>
              <!--Categoria-->
-             <a href="#" class="categoria">
-            Accesorios para hombre
-            </a>
-             <!--Categoria-->
-             <a href="#" class="categoria">
-            Electronicos
-            </a>
-             <!--Categoria-->
-             <a href="#" class="categoria">
-            Electronicos
-            </a>
-             <!--Categoria-->
-             <a href="#" class="categoria">
-            Electronicos
-            </a>
-             <!--Categoria-->
-             <a href="#" class="categoria">
-            Electronicos
-            </a>
-             <!--Categoria-->
+             <?php }?>
+            
         </div>
         <!--Categorias-->
         

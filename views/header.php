@@ -28,7 +28,7 @@
             </div>
             <nav class="navegacion">
                 <ul class="contenedor-flex">
-                    <li><a href="#"><i class="fas fa-tag"></i></a></li>
+                    <li><a href="<?php echo URL; ?>categorias"><i class="fas fa-tag"></i></a></li>
                     <li><a href="<?php echo URL; ?>carrito"><i class="fas fa-shopping-cart"></i></a></li>
                     <li><a href="<?php echo URL; ?>cuenta"><i class="fas fa-user"></i></a></li>
                 </ul>
