@@ -699,3 +699,23 @@ legend {
 .formulario-registrarse fieldset label {
     margin: 1.2rem 0 .5rem 0;
 }
+
+
+/**Categorias**/
+
+.categorias {
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+a.categoria {
+    background-color: var(--verdePrimario);
+    border-radius: .5rem;
+    margin-top: 1rem;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.8rem;
+    padding: 4.6rem 2rem;
+}
