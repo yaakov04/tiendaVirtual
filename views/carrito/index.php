@@ -1,6 +1,6 @@
 <?php require 'views/header.php';?>
 <main class="contenedor pagina-wishlist">
-        <h2>Wish list</h2>
+        <h2>Carrito</h2>
         <div class="lista-productos">
             <div class="producto contenedor-flex">
                 <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
@@ -89,6 +89,7 @@
                     <div class="encabezado contenedor-flex">
                         <div class="contenedor-txt">
                             <h3>Joystick</h3>
+                            <p>X2</p>
                         </div>
                         <div class="contenedor-txt">
                             <p class="precio">$100.00</p>
