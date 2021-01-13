@@ -5,6 +5,7 @@
             <a href="#">Aviso de privacidad </a>
         </div>
     </footer>
+    <?php require 'views/scriptJS.php';?>
 </body>
 
 </html>
