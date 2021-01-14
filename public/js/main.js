@@ -1,9 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
+    document.addEventListener('DOMContentLoaded', function() {
 
-    listeners();
 
-    function listeners() {
-        console.log('func listeners');
-    }
 
-});
+    }); //DOM CONTENT LOADED
+})();

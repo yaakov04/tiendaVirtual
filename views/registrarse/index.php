@@ -2,7 +2,7 @@
 <main>
         <div class="contenedor">
             <div class="formulario-login-contenedor formulario-registrarse-contenedor">
-                <form class="formulario-registrarse" action="">
+                <form class="formulario-registrarse" action="get">
                     <fieldset>
                         <legend>
                             <h2>Registrate</h2>
@@ -34,13 +34,14 @@
                         <input class="w-35" type="text" name="cp" id="cp">
                     </fieldset>
                     <div class="submit-contenedor">
-                        <input class="btn btn-detalles-cuenta" type="submit" value="Registrarse">
+                        <input   class="btn btn-detalles-cuenta" id="btn-registrarse" type="submit" value="Registrarse">
                     </div>
 
                 </form>
             </div>
         </div>
     </main>
+    <?php require 'views/scriptJS.php';?>
 </body>
 
 </html>

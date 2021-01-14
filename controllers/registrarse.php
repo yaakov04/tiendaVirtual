@@ -6,6 +6,12 @@ class Registrarse extends Controller{
     function render(){
         $this->view->render('registrarse/index');
     }
+
+    function registrar(){
+        die(json_encode($_POST));
+
+    }
+    
     
 
 

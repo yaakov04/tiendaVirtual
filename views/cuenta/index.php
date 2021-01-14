@@ -39,7 +39,7 @@
                 <input class="w-15" type="text" name="cp" id="cp" value="1200">
             </fieldset>
             <div class="submit-contenedor">
-                <input class="btn btn-detalles-cuenta" type="submit" value="Actualizar datos">
+                <input id="btn-cuenta" class="btn btn-detalles-cuenta" type="submit" value="Actualizar datos">
             </div>
 
         </form>

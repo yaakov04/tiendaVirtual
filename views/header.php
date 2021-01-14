@@ -20,7 +20,7 @@
             </div>
             <div class="buscador contenedor-flex">
                 <div class="input-search">
-                    <input type="search" name="" id="">
+                    <input type="search" name="" id="busqueda">
                 </div>
                 <div class="icon-search">
                     <i class="fas fa-search"></i>
