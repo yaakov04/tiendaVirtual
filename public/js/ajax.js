@@ -15,9 +15,6 @@
         } //listeners
 
 
-
-
-
         //Ajax
         function peticionAjax(controller, metodo, datos) {
             //peticion ajax
@@ -28,35 +25,75 @@
             //cargar
             xhr.onload = function() {
                 if (this.status === 200) {
-                    let respuesta = JSON.parse(xhr.responseText);
-                    console.log(respuesta);
+                    respuesta = JSON.parse(xhr.responseText);
+                    console.log(respuesta.respuesta);
+                    if (respuesta.respuesta == 'exito') {
+                        switch (respuesta.tipo) {
+                            case 'regitrar':
+                                exitoRegistrarse();
+                                break;
+
+                            default:
+                                break;
+                        }
+                    } else {
+                        //Error
+                        switch (respuesta.tipo) {
+                            case 'regitrar':
+                                errorRegistrarse();
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
                 }
             }
 
             //enviar
             xhr.send(datos);
 
-        } //peticionAjax
+
+        }
 
 
         //Registrarse
         function registrarse(e) {
             e.preventDefault();
-            let controller = 'registrarse';
-            let metodo = 'registrar';
-            let valores = obtenerValoresForm(btnRegistrarse);
-            let datos = insertandoDatosFormData(valores);
-            //console.log(...datos);
-            peticionAjax(controller, metodo, datos);
+            if (camposVaciosForm(btnRegistrarse)) {
+                notificacionError('no puede haber campos vacios', 100, 1000);
+            } else {
+                let controller = 'registrarse';
+                let metodo = 'registrar';
+                let valores = obtenerValoresForm(btnRegistrarse);
+                let datos = insertandoDatosFormData(valores);
+                //console.log(...datos);
+                peticionAjax(controller, metodo, datos);
+            }
+        }
 
-        } //Registrarse
+        function exitoRegistrarse() {
+            notificacionCorrecto('registro exitoso', 100, 1000);
+            setTimeout(() => {
+                window.location.href = "http://localhost/elPuestito/login";
+            }, 1000);
+        }
 
+        function errorRegistrarse() {
+            notificacionError('Hubo un error en la base de datos o el usuario ya existe', 100, 2500);
+            setTimeout(() => {
+                window.location.href = "http://localhost/elPuestito/registrarse";
+            }, 3000);
+        }
+
+        //Actualiza datos de cuenta
         function actualizarDatos(e) {
             e.preventDefault();
             let valores = obtenerValoresForm(btnActualizarCuenta);
             //console.log(valores);
         }
-
+        ///////////////////////////////////////////////////////////////
+        //crea el formdata de los valores obtenidos de un formulario para el ajax
         function insertandoDatosFormData(valores) {
             let datos = new FormData();
             for (i = 0; i < valores['llave'].length; i++) {
@@ -64,11 +101,9 @@
             }
             return datos;
         }
-
+        //obtiene los valores de un formulario
         function obtenerValoresForm(btn) {
-            //console.log(btn.parentElement.parentElement);
             let formulario = btn.parentElement.parentElement;
-            //console.log(formulario.querySelectorAll('input'));
             let inputs = formulario.querySelectorAll('input');
             let arreglo = new Array();
             let valores = new Array();
@@ -92,35 +127,27 @@
             return valores;
 
         }
+        //comprueba si hay campos vacios en un formulario
+        function camposVaciosForm(btn) {
+            let formulario = btn.parentElement.parentElement;
+            let inputs = formulario.querySelectorAll('input');
+            let valor = false;
+            //console.log(inputs);
+            for (i = 0; i < inputs.length; i++) {
+                if (inputs[i].id == 'btn-registrarse') {
 
-
-
-
-
-        /*
-                function registrarse(e) {
-                    e.preventDefault();
-                    console.log('click');
-                    let datos = new FormData();
-                    datos.append('agregar-admin', 'agregar-admin');
-                    //peticion ajax
-                    const xhr = new XMLHttpRequest();
-
-                    //abrir conexion
-                    xhr.open('POST', 'http://localhost/elPuestito/registrarse/registrar', true);
-                    //cargar
-                    xhr.onload = function() {
-                        if (this.status === 200) {
-                            let respuesta = JSON.parse(xhr.responseText);
-                            console.log(respuesta);
-                        }
+                } else {
+                    if (inputs[i].value == '') {
+                        //console.log('campo vacio');
+                        valor = true;
+                        i = inputs.length + 1;
                     }
-
-                    //enviar
-                    xhr.send(datos);
-
                 }
-                */ //////////////////
+            } //for
+            return valor
+        } //
+
+
 
 
 
