@@ -28,36 +28,39 @@
             xhr.open('POST', `http://localhost/elPuestito/${controller}/${metodo}`, true);
             //cargar
             xhr.onload = function() {
-                if (this.status === 200) {
-                    respuesta = JSON.parse(xhr.responseText);
-                    console.log(respuesta);
-                    if (respuesta.respuesta == 'exito') {
-                        switch (respuesta.tipo) {
-                            case 'regitrar':
-                                exitoRegistrarse();
-                                break;
-                            case 'login':
-                                exitoLogin();
-                                break
-                            default:
-                                break;
-                        }
-                    } else {
-                        //Error
-                        switch (respuesta.tipo) {
-                            case 'regitrar':
-                                errorRegistrarse();
-                                break;
-                            case 'login':
-                                errorLogin();
-                                break
+                    if (this.status === 200) {
+                        respuesta = JSON.parse(xhr.responseText);
+                        console.log(respuesta);
+                        if (respuesta.respuesta == 'exito') {
+                            switch (respuesta.tipo) {
+                                case 'regitrar':
+                                    exitoRegistrarse();
+                                    break;
+                                case 'login':
+                                    exitoLogin();
+                                    break
+                                default:
+                                    break;
+                            }
+                        } else {
+                            //Error
+                            if (respuesta.respuesta == 'error') {
+                                switch (respuesta.tipo) {
+                                    case 'regitrar':
+                                        errorRegistrarse();
+                                        break;
+                                    case 'login':
+                                        errorLogin();
+                                        break
 
-                            default:
-                                break;
+                                    default:
+                                        break;
+                                }
+                            }
+
                         }
-                    }
-                }
-            }
+                    } //status 200
+                } //onload
 
             //enviar
             xhr.send(datos);
@@ -70,7 +73,7 @@
         function registrarse(e) {
             e.preventDefault();
             if (camposVaciosForm(btnRegistrarse)) {
-                notificacionError('no puede haber campos vacios', 100, 1000);
+                notificacionError('no puede haber campos vacios', 100, 800);
             } else {
                 let controller = 'registrarse';
                 let metodo = 'registrar';
@@ -82,24 +85,21 @@
         }
 
         function exitoRegistrarse() {
-            notificacionCorrecto('registro exitoso', 100, 1000);
+            notificacionCorrecto('registro exitoso', 100, 800);
             setTimeout(() => {
                 window.location.href = "http://localhost/elPuestito/login";
-            }, 1000);
+            }, 850);
         }
 
         function errorRegistrarse() {
-            notificacionError('Hubo un error en la base de datos o el usuario ya existe', 100, 2500);
-            setTimeout(() => {
-                window.location.href = "http://localhost/elPuestito/registrarse";
-            }, 3000);
+            notificacionError('Hubo un error en la base de datos o el usuario ya existe', 100, 1200);
         }
 
         //Inicia sesión
         function iniciarSesion(e) {
             e.preventDefault();
             if (camposVaciosForm(btnIniciarSesion)) {
-                notificacionError('no puede haber campos vacios', 200, 1000);
+                notificacionError('no puede haber campos vacios', 200, 800);
             } else {
                 let controller = 'login';
                 let metodo = 'iniciarSesion';
@@ -110,14 +110,14 @@
         }
 
         function exitoLogin() {
-            notificacionCorrecto('Inicio de sesion correcto', 100, 1000);
+            notificacionCorrecto('Inicio de sesion correcto', 100, 800);
             setTimeout(() => {
                 window.location.href = "http://localhost/elPuestito/Main";
-            }, 1200);
+            }, 850);
         }
 
         function errorLogin() {
-            notificacionError('El usuario no existe o la contraseña es incorrecta', 100, 2500);
+            notificacionError('El usuario no existe o la contraseña es incorrecta', 100, 1200);
 
         }
 

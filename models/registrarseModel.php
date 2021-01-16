@@ -31,9 +31,7 @@ public function registrarBD($datos){
         if($stmt->affected_rows > 0){
             $respuesta='exito';
         }else{
-            $respuesta=array(
-                'respuesta'=>'error'
-            );
+            $respuesta='error';
         }
         $stmt->close();
         $conexion->close();

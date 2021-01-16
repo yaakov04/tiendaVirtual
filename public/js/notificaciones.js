@@ -11,7 +11,7 @@ function notificacionError(mensaje, sE, sS) {
     modal.openModalTransition(modal, sE);
     setTimeout(() => {
         modal.closeModalTransition(modal, sS);
-    }, sS + 100);
+    }, sS + 5);
 
 }
 
@@ -28,5 +28,5 @@ function notificacionCorrecto(mensaje, sE, sS) {
     modal.openModalTransition(modal, sE);
     setTimeout(() => {
         modal.closeModalTransition(modal, sS);
-    }, sS + 100);
+    }, sS + 5);
 }
