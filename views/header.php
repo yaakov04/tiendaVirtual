@@ -35,7 +35,7 @@
                         
                             <ul class="sub-menu">
                                 <li><a href="<?php echo URL; ?>cuenta">Ver Perfil</a></li>
-                                <li><a href="#">Cerrar Sesion</a></li>
+                                <li><a href="<?php echo URL; ?>login?sesion=finalizada">Cerrar Sesion</a></li>
                             </ul>
                         
                         

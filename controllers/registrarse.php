@@ -2,6 +2,13 @@
 class Registrarse extends Controller{
     function __construct(){
         parent::__construct();
+        
+         if (isset($_SESSION['login'])) {
+            if ($_SESSION['login']=true) {
+                header('Location:'. URL.Main);
+            }
+        }
+        redirectionToMain();
     }
     function render(){
         $this->view->render('registrarse/index');

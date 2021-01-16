@@ -10,6 +10,7 @@ class loginModel{
 public function iniciarSesionBD($datos){
     $usuario=filter_var($datos['username'], FILTER_SANITIZE_STRING);
     $password=$_POST['password'];
+    
     try{
         require 'config/conexion_bd.php';
         $stmt = $conexion->prepare(" SELECT id, usuario, password FROM usuarios WHERE usuario = ? ");
@@ -21,7 +22,6 @@ public function iniciarSesionBD($datos){
         if ($usuario_existe) {
             if (password_verify($password, $result_password)) {
                 //inicia sesion
-                session_start();
                 $_SESSION['id']=$result_id;
                 $_SESSION['usuario']=$result_usuario;
                 $_SESSION['login']=true;
@@ -41,9 +41,6 @@ public function iniciarSesionBD($datos){
         echo 'error:' . $e;
     }
 
-
-
-    
     return $respuesta;
 }
 
