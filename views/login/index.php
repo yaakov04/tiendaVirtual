@@ -16,11 +16,15 @@
                             <input type="password" name="password" id="password">
                         </div>
                     </fieldset>
-                    <input class="btn btn-login" type="submit" value="Iniciar sesíon">
+                    <div>
+                        <input id="btn-login" class="btn btn-login" type="submit" value="Iniciar sesíon">
+                    </div>
                 </form>
             </div>
         </div>
     </main>
+    <?php require 'views/scriptJS.php';?>
+
 </body>
 
 </html>

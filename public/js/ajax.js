@@ -2,6 +2,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         let btnRegistrarse = document.querySelector('#btn-registrarse');
         let btnActualizarCuenta = document.querySelector('#btn-cuenta');
+        let btnIniciarSesion = document.querySelector('#btn-login');
 
         listeners();
 
@@ -11,6 +12,9 @@
             }
             if (btnActualizarCuenta) {
                 btnActualizarCuenta.addEventListener('click', actualizarDatos);
+            }
+            if (btnIniciarSesion) {
+                btnIniciarSesion.addEventListener('click', iniciarSesion);
             }
         } //listeners
 
@@ -26,13 +30,15 @@
             xhr.onload = function() {
                 if (this.status === 200) {
                     respuesta = JSON.parse(xhr.responseText);
-                    console.log(respuesta.respuesta);
+                    console.log(respuesta);
                     if (respuesta.respuesta == 'exito') {
                         switch (respuesta.tipo) {
                             case 'regitrar':
                                 exitoRegistrarse();
                                 break;
-
+                            case 'login':
+                                exitoLogin();
+                                break
                             default:
                                 break;
                         }
@@ -42,6 +48,9 @@
                             case 'regitrar':
                                 errorRegistrarse();
                                 break;
+                            case 'login':
+                                errorLogin();
+                                break
 
                             default:
                                 break;
@@ -84,6 +93,32 @@
             setTimeout(() => {
                 window.location.href = "http://localhost/elPuestito/registrarse";
             }, 3000);
+        }
+
+        //Inicia sesión
+        function iniciarSesion(e) {
+            e.preventDefault();
+            if (camposVaciosForm(btnIniciarSesion)) {
+                notificacionError('no puede haber campos vacios', 200, 1000);
+            } else {
+                let controller = 'login';
+                let metodo = 'iniciarSesion';
+                let valores = obtenerValoresForm(btnIniciarSesion);
+                let datos = insertandoDatosFormData(valores);
+                peticionAjax(controller, metodo, datos);
+            }
+        }
+
+        function exitoLogin() {
+            notificacionCorrecto('Inicio de sesion correcto', 100, 1000);
+            setTimeout(() => {
+                window.location.href = "http://localhost/elPuestito/Main";
+            }, 1200);
+        }
+
+        function errorLogin() {
+            notificacionError('El usuario no existe o la contraseña es incorrecta', 100, 2500);
+
         }
 
         //Actualiza datos de cuenta

@@ -27,15 +27,16 @@ public function registrarBD($datos){
         $stmt = $conexion->prepare(" INSERT INTO usuarios (usuario, password, nombre, apellido, fecha_nacimiento, email, calle, numero, ciudad, pais, cp) VALUES (?,?,?,?,?,?,?,?,?,?,?) ");
         $stmt->bind_param("sssssssssss", $usuario, $password, $nombre, $apellido, $fecha_nacimiento, $email, $calle, $numero, $ciudad, $pais, $cp);
         $stmt->execute();
-        $respuesta='work';
+        
         if($stmt->affected_rows > 0){
             $respuesta='exito';
         }else{
             $respuesta=array(
-                'respuesta'=>'error',
-                'tipo' => 'registrar'
+                'respuesta'=>'error'
             );
         }
+        $stmt->close();
+        $conexion->close();
     }catch (Exception $e) {
         echo 'error:' . $e;
     }

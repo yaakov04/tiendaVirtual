@@ -67,6 +67,7 @@ img {
     background-color: var(--verdeOscuro);
     border-radius: 5px;
     border: none;
+    cursor: pointer;
 }
 
 
