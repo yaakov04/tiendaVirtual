@@ -30,7 +30,7 @@
             xhr.onload = function() {
                     if (this.status === 200) {
                         respuesta = JSON.parse(xhr.responseText);
-                        console.log(respuesta);
+                        //console.log(respuesta);
                         if (respuesta.respuesta == 'exito') {
                             switch (respuesta.tipo) {
                                 case 'regitrar':

@@ -7,6 +7,12 @@
             btnRegistrarse.onclick = function() { validacionForm(formularioRegistrarse) }
         }
 
+        if (document.querySelector('.formulario-login-contenedor')) {
+            let formularioLogin = document.querySelector('.formulario-login-contenedor');
+            let btnLogin = document.querySelector('#btn-login');
+            btnLogin.onclick = function() { validacionForm(formularioLogin) }
+        }
+
         function validacionForm(form) {
             let inputs = form.querySelectorAll('input');
             for (i = 0; i < inputs.length; i++) {
