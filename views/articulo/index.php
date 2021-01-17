@@ -22,9 +22,9 @@
                 <div class="contenedor-input">
 
                     <div class="input-number contenedor-flex">
-                        <button class="btn"><i class="fas fa-minus"></i></button>
-                        <input type="number" name="" id="">
-                        <button class="btn"><i class="fas fa-plus"></i></button>
+                        <button id="btn-input-number-menos" class="btn"><i class="fas fa-minus"></i></button>
+                        <input type="number" name="" id="number">
+                        <button id="btn-input-number-mas" class="btn"><i class="fas fa-plus"></i></button>
                     </div>
 
                 </div>

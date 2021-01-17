@@ -13,6 +13,15 @@
             btnLogin.onclick = function() { validacionForm(formularioLogin) }
         }
 
+        if (document.querySelector('#btn-input-number-mas')) {
+            let btnInputNumberMas = document.querySelector('#btn-input-number-mas');
+            btnInputNumberMas.addEventListener('click', adicionInput);
+        }
+        if (document.querySelector('#btn-input-number-menos')) {
+            let btnInputNumberMas = document.querySelector('#btn-input-number-menos');
+            btnInputNumberMas.addEventListener('click', sustraccionInput);
+        }
+
         function validacionForm(form) {
             let inputs = form.querySelectorAll('input');
             for (i = 0; i < inputs.length; i++) {
@@ -26,7 +35,31 @@
                     }
                 }
             } //for
-        }
+        } //
+
+        function adicionInput() {
+
+            let inputValue = document.querySelector('input#number').value;
+            if (inputValue == '') {
+                document.querySelector('input#number').value = 1;
+            } else {
+                inputValue = parseInt(inputValue);
+                document.querySelector('input#number').value = inputValue + 1;
+                //console.log(inputValue);
+            }
+        } //
+
+        function sustraccionInput() {
+            let inputValue = document.querySelector('input#number').value;
+            if (inputValue == '') {
+
+            } else {
+                inputValue = parseInt(inputValue);
+                if (inputValue > 0) {
+                    document.querySelector('input#number').value = inputValue - 1;
+                }
+            }
+        } //
 
 
 
