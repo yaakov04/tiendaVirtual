@@ -29,13 +29,17 @@
             <nav class="navegacion">
                 <ul class="contenedor-flex">
                     <li><a href="<?php echo URL; ?>categorias"><i class="fas fa-tag"></i></a></li>
-                    <li><a href="<?php echo URL; ?>carrito"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li>
+                        <a href="<?php echo URL; ?>carrito"><i class="fas fa-shopping-cart"></i></a>
+                        <ul class="sub-menu">
+                        <?php echo checkLoginNavCarrito(); ?>
+                        </ul>
+                    </li>
                     <li id="profile-icon">
                         <a href="<?php echo URL; ?>cuenta"><i class="fas fa-user"></i></a>
                         
                             <ul class="sub-menu">
-                                <li><a href="<?php echo URL; ?>cuenta">Ver Perfil</a></li>
-                                <li><a href="<?php echo URL; ?>login?sesion=finalizada">Cerrar Sesion</a></li>
+                                <?php echo checkLoginNavCuenta(); ?>
                             </ul>
                         
                         

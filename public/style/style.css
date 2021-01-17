@@ -724,7 +724,7 @@ a.categoria {
 
 /**SubMenu**/
 
-#profile-icon {
+.navegacion ul li {
     position: relative;
 }
 
@@ -746,7 +746,7 @@ a.categoria {
     margin-bottom: 2rem;
 }
 
-#profile-icon:hover>.sub-menu {
+.navegacion ul li:hover>.sub-menu {
     display: block;
     transition: all .5s ease-in-out;
 }
