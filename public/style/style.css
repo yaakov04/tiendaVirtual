@@ -317,6 +317,10 @@ section.contenedor h2 {
     -webkit-appearance: none;
 }
 
+.input-number input {
+    -moz-appearance: textfield;
+}
+
 .pagina-producto .descripcion h2 {
     text-transform: uppercase;
     font-weight: 500;
@@ -699,6 +703,10 @@ legend {
 
 .formulario-registrarse fieldset label {
     margin: 1.2rem 0 .5rem 0;
+}
+
+.formulario-registrarse fieldset input {
+    width: 100%;
 }
 
 
