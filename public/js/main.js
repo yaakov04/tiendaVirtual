@@ -16,6 +16,7 @@
         if (document.querySelector('#btn-input-number-mas')) {
             let btnInputNumberMas = document.querySelector('#btn-input-number-mas');
             btnInputNumberMas.addEventListener('click', adicionInput);
+            document.querySelector('input#number').value = 1;
         }
         if (document.querySelector('#btn-input-number-menos')) {
             let btnInputNumberMas = document.querySelector('#btn-input-number-menos');

@@ -24,6 +24,7 @@ public function iniciarSesionBD($datos){
                 //inicia sesion
                 $_SESSION['id']=$result_id;
                 $_SESSION['usuario']=$result_usuario;
+                $_SESSION['carrito']=array();
                 $_SESSION['login']=true;
                 $respuesta='exito';
             }else{

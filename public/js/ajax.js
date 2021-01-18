@@ -3,6 +3,7 @@
         let btnRegistrarse = document.querySelector('#btn-registrarse');
         let btnActualizarCuenta = document.querySelector('#btn-cuenta');
         let btnIniciarSesion = document.querySelector('#btn-login');
+        let btnAddCarrito = document.querySelector('#btn-add-carrito');
 
         listeners();
 
@@ -15,6 +16,9 @@
             }
             if (btnIniciarSesion) {
                 btnIniciarSesion.addEventListener('click', iniciarSesion);
+            }
+            if (btnAddCarrito) {
+                btnAddCarrito.addEventListener('click', addArticuloCarrito)
             }
         } //listeners
 
@@ -126,6 +130,16 @@
             e.preventDefault();
             let valores = obtenerValoresForm(btnActualizarCuenta);
             //console.log(valores);
+        }
+
+        function addArticuloCarrito(e) {
+            let idArticulo = btnAddCarrito.getAttribute('data-id-articulo');
+            let controller = 'carrito';
+            let metodo = 'addArticulo';
+            let datos = new FormData;
+            datos.append('id_articulo', idArticulo);
+            //console.log(...datos);
+            peticionAjax(controller, metodo, datos);
         }
         ///////////////////////////////////////////////////////////////
         //crea el formdata de los valores obtenidos de un formulario para el ajax
