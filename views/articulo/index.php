@@ -1,19 +1,13 @@
 <?php require 'views/header.php';?>
 <main class="contenedor pagina-producto">
-<?php $articulo = $this->articulo->fetch_assoc();
-echo '<pre>';
-var_dump($_SESSION['carrito']);
-echo '</pre>';
-
-
-?>
+<?php $articulo = $this->articulo->fetch_assoc();?>
         <section class="contenedor-flex">
             <div>
                 <img src="<?php echo URL; ?>public/img/<?php echo $articulo['img_producto'] ?>" alt="<?php echo $articulo['nombre_producto']; ?>">
                 <div class="contenedor-btn">
                     <a href="<?php echo URL; ?>checkout#confirma_direccion" class="btn">Comprar</a>
                     <div class="contenedor-flex">
-                        <button id="btn-add-carrito" data-id-articulo="<?php echo $articulo['id']; ?>" class="btn">Añadir al carrito</button>
+                        <button id="<?php echo checkLoginAddCarrito(); ?>" data-id-articulo="<?php echo $articulo['id']; ?>" class="btn">Añadir al carrito</button>
                         <button class="btn">Añadir al wish list</button>
                     </div>
                 </div>

@@ -36,3 +36,29 @@ function checkLoginNavCarrito(){
         ';
     }
 }
+
+function checkCarritoItems(){
+if (count($_SESSION['carrito'])==0) {
+    return '<p style="margin:4.2rem;font-size:2.2rem">No hay items en el carrito</p>';
+}
+}
+
+function checkItemsCarritoIcon(){
+    if (isset($_SESSION['carrito'])) {
+        if (count($_SESSION['carrito'])>0) {
+            return '<a href="'.URL.'carrito"><i class="fas fa-shopping-cart" style="color:#dffce4ff"></i></a>';
+        }else{
+            return '<a href="'.URL.'carrito"><i class="fas fa-shopping-cart"></i></a>';
+        }
+    }else{
+        return '<a href="'.URL.'login"><i class="fas fa-shopping-cart"></i></a>';
+    }
+}
+
+function checkLoginAddCarrito(){
+    if (isset($_SESSION['login'])&&$_SESSION['login']==true) {
+        return 'btn-add-carrito-login';
+    }else{
+        return 'btn-add-carrito-nologin';
+    }
+}

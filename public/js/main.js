@@ -22,6 +22,10 @@
             let btnInputNumberMas = document.querySelector('#btn-input-number-menos');
             btnInputNumberMas.addEventListener('click', sustraccionInput);
         }
+        if (document.querySelector('#btn-add-carrito-nologin')) {
+            let btnAddCarrito = document.querySelector('#btn-add-carrito-nologin');
+            btnAddCarrito.addEventListener('click', notificacionNoLogin)
+        }
 
         function validacionForm(form) {
             let inputs = form.querySelectorAll('input');
@@ -61,6 +65,10 @@
                 }
             }
         } //
+
+        function notificacionNoLogin() {
+            notificacionError('Necesita inciar sesion para realizar esta acción', 100, 1200);
+        }
 
 
 

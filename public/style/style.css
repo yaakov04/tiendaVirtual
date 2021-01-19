@@ -812,6 +812,12 @@ a.categoria {
     width: 60rem;
 }
 
+.btn-modal {
+    flex: 0 0 calc(50% - 1rem);
+    color: #ffffff;
+    text-align: center;
+}
+
 
 /**validacion inputs**/
 

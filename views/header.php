@@ -30,7 +30,8 @@
                 <ul class="contenedor-flex">
                     <li><a href="<?php echo URL; ?>categorias"><i class="fas fa-tag"></i></a></li>
                     <li>
-                        <a href="<?php echo URL; ?>carrito"><i class="fas fa-shopping-cart"></i></a>
+                        <?php echo checkItemsCarritoIcon(); ?>
+                        
                         <ul class="sub-menu">
                         <?php echo checkLoginNavCarrito(); ?>
                         </ul>
