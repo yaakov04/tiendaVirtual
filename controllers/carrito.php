@@ -20,41 +20,46 @@ class Carrito extends Controller{
             'cantidad'=> 1
         );
         //var_dump($_SESSION['carrito'][1]['id']);
-        $repite=false;
-        if (count($_SESSION['carrito'])>0) {
-            for ($i=0; $i < count($_SESSION['carrito']); $i++) { 
-               if ($_SESSION['carrito'][$i]['id']==$articulo['id']) {
-                   //se repite cantidad++
-                $_SESSION['carrito'][$i]['cantidad']++;
-                $respuesta=array(
-                    'respuesta'=>'exito',
-                    'tipo'=>'addArticuloCarrito',
-                    'mensaje'=>'cantidad++'
-                );
-                $repite=true;
-                $i= count($_SESSION['carrito'])+1;
-               }
-            }
 
-            if (!$repite) {
-                //agrega item cart si no se repite
-                array_push($_SESSION['carrito'], $articulo);
-                $respuesta=array(
-                    'respuesta'=>'exito',
-                    'tipo'=>'addArticuloCarrito'
-                );
-            }
-        }else{
-            array_push($_SESSION['carrito'], $articulo);
+        if(isset($_SESSION['carrito'][$articulo['id']])){
+            $_SESSION['carrito'][$articulo['id']]['cantidad']++;
             $respuesta=array(
                 'respuesta'=>'exito',
-                'tipo'=>'addArticuloCarrito'
+                'tipo'=>'addArticuloCarrito',
+                'mensaje'=>'Se añadio el articulo: '.$_SESSION['carrito'][$articulo['id']]['nombre'].' X'.$_SESSION['carrito'][$articulo['id']]['cantidad'].' al carrito'
             );
-        }
-        
-        
+        }else{
+            $_SESSION['carrito'][$articulo['id']]=$articulo;
+            $respuesta=array(
+                'respuesta'=>'exito',
+                'tipo'=>'addArticuloCarrito',
+                'mensaje'=> 'El articulo: '.$_SESSION['carrito'][$articulo['id']]['nombre'].' se añadio correctamente'
+            );
+        }//if-else
         die(json_encode($respuesta));
     }//metodo
+
+    function eliminarArticulo(){
+        $id = $_POST['id_articulo'];
+
+        if(isset($_SESSION['carrito'][$id])){
+            unset($_SESSION['carrito'][$id]);
+            $respuesta=array(
+                'respuesta'=>'exito',
+                'tipo'=>'eliminarArticulo',
+                'mensaje'=>'El articulo se elimino correctamente'
+            );
+        }else{
+            $respuesta=array(
+                'respuesta'=>'error',
+                'tipo'=>'eliminarArticulo',
+                'mensaje'=>'No existe el articulo'
+            );
+            }
+
+        
+        die(json_encode($respuesta));
+    }
     
 
 

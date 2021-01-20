@@ -48,3 +48,28 @@ function notificacionaddItemCarrito(mensaje) {
     modal.openModalTransition(modal, 150);
     document.querySelector('#btn-close-modal').onclick = function() { modal.closeModalTransition(modal, 300); }
 }
+
+function notificacionConfirm(mensaje, funcion) {
+
+    let modal = new Modal(`
+    <div  style="display:flex;justify-content:center">
+        <i style="color:green;font-size:20rem" class="fas fa-question-circle"></i>
+    </div>
+    <p style="color: #44f56fff;text-align:center;font-size:3.5rem; font-weight:bold">${mensaje}</p>
+    <p style="color:black;text-align:center;font-weight:bold">Esta accion no se puede revertir</p>
+        <div  style="display:flex;justify-content:space-between">
+            <button id="btn-confirmar-modal" class="btn btn-modal">Confirmar</button>
+            <button id="btn-close-modal" class="btn btn-modal">Cancelar</button>
+        </div>
+    `);
+
+    modal.openModal();
+    modal.setModalTransition();
+    modal.openModalTransition(modal, 150);
+    document.querySelector('#btn-close-modal').onclick = function() { modal.closeModalTransition(modal, 300); }
+    let btnconfirmar = document.querySelector('#btn-confirmar-modal');
+    btnconfirmar.onclick = function() {
+        funcion();
+        modal.closeModalTransition(modal, 150);
+    }
+}

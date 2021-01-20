@@ -1,4 +1,5 @@
-<?php require 'views/header.php';?>
+<?php require 'views/header.php';
+?>
 <main class="contenedor pagina-wishlist">
         <h2>Carrito</h2>
         <div class="lista-productos">
@@ -21,7 +22,7 @@
                     </div>
                     <div class="acciones contenedor-flex">
                         <div class="contenedor-flex">
-                            <a href="#">Eliminar</a>
+                            <a href="#" data-accion="eliminar" data-id-articulo="<?php echo $producto['id'] ?>" >Eliminar</a>
                             <a href="#">Mover al whislist</a>
                         </div>
                         <div class="acciones-button">
