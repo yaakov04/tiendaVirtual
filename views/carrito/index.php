@@ -1,4 +1,5 @@
 <?php require 'views/header.php';
+var_dump($_SESSION['wishlist']);
 ?>
 <main class="contenedor pagina-wishlist">
         <h2>Carrito</h2>
@@ -23,7 +24,7 @@
                     <div class="acciones contenedor-flex">
                         <div class="contenedor-flex">
                             <a href="#" data-accion="eliminar" data-id-articulo="<?php echo $producto['id'] ?>" >Eliminar</a>
-                            <a href="#">Mover al whislist</a>
+                            <a href="#" data-accion="mover-wishlist" data-id-articulo="<?php echo $producto['id'] ?>">Mover al whislist</a>
                         </div>
                         <div class="acciones-button">
                             <button class="btn">Comprar</button>

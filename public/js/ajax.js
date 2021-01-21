@@ -6,6 +6,7 @@
         let btnAddCarrito = document.querySelector('#btn-add-carrito-login');
         let carritoListaArticulos = document.querySelector('.lista-productos');
 
+
         listeners();
 
         function listeners() {
@@ -23,7 +24,9 @@
             }
             if (carritoListaArticulos) {
                 carritoListaArticulos.addEventListener('click', eliminarArticulo);
+                carritoListaArticulos.addEventListener('click', moverWishlist);
             }
+
         } //listeners
 
 
@@ -52,6 +55,9 @@
                                     break
                                 case 'eliminarArticulo':
                                     exitoEliminarArticulo(respuesta.mensaje);
+                                    break
+                                case 'moverAlWishlist':
+                                    notificacionCorrecto(respuesta.mensaje, 100, 800);
                                     break
                                 default:
                                     break;
@@ -172,30 +178,33 @@
                     datos.append('id_articulo', idArticulo);
                     peticionAjax(controller, metodo, datos);
                     //console.log(btn.parentElement.parentElement.parentElement.parentElement);
-                    btn.parentElement.parentElement.parentElement.parentElement.remove();
-                    if (document.querySelectorAll('.producto').length > 0) {
-                        totalCarrito(document.querySelector('.lista-productos'));
-                    } else {
-                        document.querySelector('.lista-productos').innerHTML = `<p style="margin:4.2rem;font-size:2.2rem">No hay items en el carrito</p>`;
-                        document.querySelector('.fa-shopping-cart').style.color = '#217535ff';
-                        let cero = 0;
-                        document.querySelector('#sub-total').innerText = cero.toFixed(2);
-                        document.querySelector('#total').innerHTML = cero.toFixed(2);
-                    }
-                    /*
-                    if (document.querySelectorAll('.producto').length == 0) {
-                        document.querySelector('.lista-productos').innerHTML = `<p style="margin:4.2rem;font-size:2.2rem">No hay items en el carrito</p>`;
-                        document.querySelector('.fa-shopping-cart').style.color = '#217535ff';
-                    }*/
-
-
+                    eliminarArticuloCarritoHtml(btn);
                 } //eliminar
             }
 
-        } //
+        } //function
         function exitoEliminarArticulo(mensaje) {
             notificacionCorrecto(mensaje, 100, 800);
         }
+
+        function moverWishlist(e) {
+            e.preventDefault();
+            let btn = e.target;
+            if (btn.getAttribute('data-accion') == 'mover-wishlist') {
+                let idArticulo = btn.getAttribute('data-id-articulo');
+                //console.log(btn.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerText);
+                let cantidad = btn.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerText;
+                cantidad = parseInt(cantidad.replace('X', ''));
+                let controller = 'wishlist';
+                let metodo = 'artCarritoToWishlist';
+                let datos = new FormData;
+                datos.append('id_articulo', idArticulo);
+                datos.append('cantidad', cantidad);
+                peticionAjax(controller, metodo, datos);
+                eliminarArticuloCarritoHtml(btn);
+            }
+        } //
+
         ///////////////////////////////////////////////////////////////
         //crea el formdata de los valores obtenidos de un formulario para el ajax
         function insertandoDatosFormData(valores) {
@@ -251,7 +260,18 @@
             return valor
         } //
 
-
+        function eliminarArticuloCarritoHtml(btn) {
+            btn.parentElement.parentElement.parentElement.parentElement.remove();
+            if (document.querySelectorAll('.producto').length > 0) {
+                totalCarrito(document.querySelector('.lista-productos'));
+            } else {
+                document.querySelector('.lista-productos').innerHTML = `<p style="margin:4.2rem;font-size:2.2rem">No hay items en el carrito</p>`;
+                document.querySelector('.fa-shopping-cart').style.color = '#217535ff';
+                let cero = 0;
+                document.querySelector('#sub-total').innerText = cero.toFixed(2);
+                document.querySelector('#total').innerHTML = cero.toFixed(2);
+            }
+        }
 
 
 

@@ -25,7 +25,7 @@ class Carrito extends Controller{
             $_SESSION['carrito'][$articulo['id']]['cantidad']++;
             $respuesta=array(
                 'respuesta'=>'exito',
-                'tipo'=>'addArticuloCarrito',
+                'tipo'=>'addArticuloCarrito',//++
                 'mensaje'=>'Se añadio el articulo: '.$_SESSION['carrito'][$articulo['id']]['nombre'].' X'.$_SESSION['carrito'][$articulo['id']]['cantidad'].' al carrito'
             );
         }else{
@@ -54,7 +54,7 @@ class Carrito extends Controller{
                 'respuesta'=>'error',
                 'tipo'=>'eliminarArticulo',
                 'mensaje'=>'No existe el articulo'
-            );
+                );
             }
 
         
