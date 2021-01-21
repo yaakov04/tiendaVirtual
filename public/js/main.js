@@ -26,6 +26,18 @@
             let btnAddCarrito = document.querySelector('#btn-add-carrito-nologin');
             btnAddCarrito.addEventListener('click', notificacionNoLogin)
         }
+        if (document.querySelector('#pagar-carrito')) {
+            let btnPagarCarrito = document.querySelector('#pagar-carrito');
+            btnPagarCarrito.addEventListener('click', pagarCarrito)
+        }
+        if (document.querySelector('.lista-productos')) {
+            let carritoListaArticulos = document.querySelector('.lista-productos');
+            carritoListaArticulos.addEventListener('click', pagarArticuloCarrito);
+        }
+        if (document.querySelector('#btn-comprar-articulo')) {
+            let btnComprarArticulo = document.querySelector('#btn-comprar-articulo');
+            btnComprarArticulo.addEventListener('click', pagarArticulo);
+        }
 
 
         function validacionForm(form) {
@@ -70,6 +82,29 @@
         function notificacionNoLogin() {
             notificacionError('Necesita inciar sesion para realizar esta acción', 100, 1200);
         } //
+
+        function pagarCarrito() {
+            window.location.href = "http://localhost/elPuestito/checkout?pagar=true&accion=pagar_carrito#confirma_direccion";
+        }
+
+        function pagarArticuloCarrito(e) {
+            let btn = e.target;
+            console.log(btn)
+            if (btn.getAttribute('data-accion') == 'pagar-articulo') {
+                let idArticulo = btn.getAttribute('data-id-articulo');
+                window.location.href = `http://localhost/elPuestito/checkout?id_articulo=${idArticulo}&pagar=true&accion=pagar_articulo_carrito#confirma_direccion`;
+            }
+        }
+
+        function pagarArticulo(e) {
+            e.preventDefault();
+            let btn = document.querySelector('#btn-comprar-articulo');
+            let idArticulo = btn.getAttribute('data-id-articulo');
+            //console.log(btn.parentElement.parentElement.parentElement.children[1].children[5].children[0].children[1].value)
+            let cantidad = btn.parentElement.parentElement.parentElement.children[1].children[5].children[0].children[1].value;
+            window.location.href = `http://localhost/elPuestito/checkout?id_articulo=${idArticulo}&cantidad=${cantidad}&pagar=true&accion=pagar_articulo#confirma_direccion`
+
+        }
 
 
     }); //DOM CONTENT LOADED

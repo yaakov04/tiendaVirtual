@@ -62,3 +62,11 @@ function checkLoginAddCarrito(){
         return 'btn-add-carrito-nologin';
     }
 }
+
+function checkLoginComprarArticulo(){
+    if (isset($_SESSION['login'])&&$_SESSION['login']==true) {
+        return 'btn-comprar-articulo';
+    }else{
+        return 'btn-comprar-articulo-nologin';
+    }
+}

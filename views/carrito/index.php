@@ -1,5 +1,4 @@
 <?php require 'views/header.php';
-var_dump($_SESSION['wishlist']);
 ?>
 <main class="contenedor pagina-wishlist">
         <h2>Carrito</h2>
@@ -27,7 +26,7 @@ var_dump($_SESSION['wishlist']);
                             <a href="#" data-accion="mover-wishlist" data-id-articulo="<?php echo $producto['id'] ?>">Mover al whislist</a>
                         </div>
                         <div class="acciones-button">
-                            <button class="btn">Comprar</button>
+                            <button data-id-articulo="<?php echo $producto['id'] ?>" data-accion="pagar-articulo" class="btn">Comprar</button>
                         </div>
 
                     </div>
@@ -63,7 +62,7 @@ var_dump($_SESSION['wishlist']);
                 </table>
             </div>
             <div class="pagar-btn-container">
-                <button class="btn">Pagar</button>
+                <button id="pagar-carrito" class="btn">Pagar</button>
             </div>
         </div>
     </div>

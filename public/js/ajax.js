@@ -205,6 +205,8 @@
             }
         } //
 
+
+
         ///////////////////////////////////////////////////////////////
         //crea el formdata de los valores obtenidos de un formulario para el ajax
         function insertandoDatosFormData(valores) {

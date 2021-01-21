@@ -1,4 +1,6 @@
-<?php require 'views/header.php';?>
+<?php require 'views/header.php';
+$articulos_pagar = $this->articulos_pagar;
+?>
 
 <main class="contenedor pagina-checkout pagina-detalles-pedido">
         <h2>Detalles de compra</h2>
@@ -54,91 +56,28 @@
 
 
         </div>
-        <div class="producto contenedor-flex">
-            <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
-            <div class="detalles-producto detalles-producto-checkout">
-                <div class="encabezado contenedor-flex detalles-encabezado encabezado-checkout">
-                    <div class="contenedor-txt">
-                        <h3>Joystick</h3>
-                    </div>
-                    <div class="contenedor-txt">
-                        <p class="text-strong ">x1</p>
+        <div class="lista-productos">
+        <?php foreach ($articulos_pagar as $producto) {?>
+            <div class="producto contenedor-flex">
+                <div class="img"><img src="<?php echo URL.'public/img/'.$producto['img'] ?>" alt="<?php echo $producto['nombre'] ?>"></div>
+                <div class="detalles-producto detalles-producto-checkout">
+                    <div class="encabezado contenedor-flex detalles-encabezado encabezado-checkout">
+                        <div class="contenedor-txt">
+                            <h3><?php echo $producto['nombre'] ?></h3>
+                        </div>
+                        <div class="contenedor-txt">
+                            <p class="text-strong ">X<?php echo $producto['cantidad'] ?></p>
+                            <input type="hidden" data-id-articulo="<?php echo $producto['id'] ?>" name="precio" value="<?php echo $producto['precio'] ?>">
+                        </div>
 
                     </div>
 
                 </div>
-
             </div>
-        </div>
-        <!--./producto-->
-        <div class="producto contenedor-flex">
-            <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
-            <div class="detalles-producto detalles-producto-checkout">
-                <div class="encabezado contenedor-flex detalles-encabezado encabezado-checkout">
-                    <div class="contenedor-txt">
-                        <h3>Joystick</h3>
-                    </div>
-                    <div class="contenedor-txt">
-                        <p class="text-strong ">x1</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <!--./producto-->
-        <div class="producto contenedor-flex">
-            <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
-            <div class="detalles-producto detalles-producto-checkout">
-                <div class="encabezado contenedor-flex detalles-encabezado encabezado-checkout">
-                    <div class="contenedor-txt">
-                        <h3>Joystick</h3>
-                    </div>
-                    <div class="contenedor-txt">
-                        <p class="text-strong ">x1</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <!--./producto-->
-        <div class="producto contenedor-flex">
-            <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
-            <div class="detalles-producto detalles-producto-checkout">
-                <div class="encabezado contenedor-flex detalles-encabezado encabezado-checkout">
-                    <div class="contenedor-txt">
-                        <h3>Joystick</h3>
-                    </div>
-                    <div class="contenedor-txt">
-                        <p class="text-strong ">x1</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <!--./producto-->
-        <div class="producto contenedor-flex">
-            <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
-            <div class="detalles-producto detalles-producto-checkout">
-                <div class="encabezado contenedor-flex detalles-encabezado encabezado-checkout">
-                    <div class="contenedor-txt">
-                        <h3>Joystick</h3>
-                    </div>
-                    <div class="contenedor-txt">
-                        <p class="text-strong ">x1</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <!--./producto-->
+            <!--./producto-->
+        <?php }//foreach?>
+       
+        </div><!--./lista-productos-->
 
 
 
