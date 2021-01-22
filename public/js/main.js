@@ -24,7 +24,11 @@
         }
         if (document.querySelector('#btn-add-carrito-nologin')) {
             let btnAddCarrito = document.querySelector('#btn-add-carrito-nologin');
-            btnAddCarrito.addEventListener('click', notificacionNoLogin)
+            btnAddCarrito.addEventListener('click', notificacionNoLogin);
+        }
+        if (document.querySelector('#btn-add-wishlist-nologin')) {
+            let btnAddWishlist = document.querySelector('#btn-add-wishlist-nologin');
+            btnAddWishlist.addEventListener('click', notificacionNoLogin);
         }
         if (document.querySelector('#pagar-carrito')) {
             let btnPagarCarrito = document.querySelector('#pagar-carrito');
@@ -38,7 +42,10 @@
             let btnComprarArticulo = document.querySelector('#btn-comprar-articulo');
             btnComprarArticulo.addEventListener('click', pagarArticulo);
         }
-
+        if (document.querySelector('#btn-comprar-articulo-nologin')) {
+            let btnComprarArticulo = document.querySelector('#btn-comprar-articulo-nologin');
+            btnComprarArticulo.addEventListener('click', notificacionNoLogin);
+        }
 
         function validacionForm(form) {
             let inputs = form.querySelectorAll('input');
@@ -79,7 +86,8 @@
             }
         } //
 
-        function notificacionNoLogin() {
+        function notificacionNoLogin(e) {
+            e.preventDefault();
             notificacionError('Necesita inciar sesion para realizar esta acción', 100, 1200);
         } //
 

@@ -8,7 +8,7 @@ class WishList extends Controller{
         $this->view->render('wishlist/index');
     }
     function addArticulo(){
-        $cantidad = $_POST['cantidad'];
+        
         $consultaDB=$this->model->getDatosWishlist($_POST['id_articulo']);
         $resultado = $consultaDB->fetch_assoc();
         $articulo= array(
@@ -16,9 +16,51 @@ class WishList extends Controller{
             'nombre' => $resultado['nombre_producto'],
             'precio' => $resultado['precio'],
             'img' => $resultado['img_producto'],
-            'cantidad'=> $cantidad
+            'cantidad'=> 1
         );
+        //comprueba si ya existe el item en el wishlist
+        if (isset($_SESSION['wishlist'][$articulo['id']])) {
+            //existe->item++
+            $_SESSION['wishlist'][$articulo['id']]['cantidad']++;
+            $respuesta=array(
+                'respuesta'=>'exito',
+                'tipo'=>'addArticuloWishlist',//++
+                'mensaje'=>'Se añadio el articulo: '.$_SESSION['wishlist'][$articulo['id']]['nombre'].' X'.$_SESSION['wishlist'][$articulo['id']]['cantidad'].' al wishlist'
+            );
+        }else{
+            //¬existe->additem
+            $_SESSION['wishlist'][$articulo['id']]=$articulo;
+            $respuesta=array(
+                'respuesta'=>'exito',
+                'tipo'=>'addArticuloWishlist',
+                'mensaje'=> 'El articulo: '.$_SESSION['wishlist'][$articulo['id']]['nombre'].' se añadio correctamente'
+            );
+        }
+        die(json_encode($respuesta));
     }
+
+    function eliminarArticulo(){
+        $id=$_POST['id_articulo'];
+        if (isset($_SESSION['wishlist'][$id])) {
+            //existe->eliminarItem
+            unset($_SESSION['wishlist'][$id]);
+            $respuesta=array(
+                'respuesta'=>'exito',
+                'tipo'=>'eliminarArticuloWishlist',
+                'mensaje'=>'El articulo se elimino correctamente'
+            );
+
+        }else{
+            //¬existe->notificar
+            $respuesta=array(
+                'respuesta'=>'error',
+                'tipo'=>'eliminarArticuloWishlist',
+                'mensaje'=>'No existe el articulo'
+                );
+        }
+        die(json_encode($respuesta));
+    }
+
     function artCarritoToWishlist(){
         $id_articulo=$_POST['id_articulo'];
         $cantidad =$_POST['cantidad'];

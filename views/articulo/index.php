@@ -8,7 +8,7 @@
                     <a href="#" id="<?php echo checkLoginComprarArticulo(); ?>" data-id-articulo="<?php echo $articulo['id']; ?>" class="btn">Comprar</a>
                     <div class="contenedor-flex">
                         <button id="<?php echo checkLoginAddCarrito(); ?>" data-id-articulo="<?php echo $articulo['id']; ?>" class="btn">Añadir al carrito</button>
-                        <button class="btn">Añadir al wish list</button>
+                        <button id="<?php echo checkLoginAddWishlist(); ?>" class="btn">Añadir al wish list</button>
                     </div>
                 </div>
             </div>

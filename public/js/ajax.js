@@ -5,6 +5,7 @@
         let btnIniciarSesion = document.querySelector('#btn-login');
         let btnAddCarrito = document.querySelector('#btn-add-carrito-login');
         let carritoListaArticulos = document.querySelector('.lista-productos');
+        let btnAddWishlist = document.querySelector('#btn-add-wishlist-login');
 
 
         listeners();
@@ -25,6 +26,10 @@
             if (carritoListaArticulos) {
                 carritoListaArticulos.addEventListener('click', eliminarArticulo);
                 carritoListaArticulos.addEventListener('click', moverWishlist);
+                carritoListaArticulos.addEventListener('click', eliminarArticuloWishlist)
+            }
+            if (btnAddWishlist) {
+                btnAddWishlist.addEventListener('click', addArticuloWishlist);
             }
 
         } //listeners
@@ -59,6 +64,11 @@
                                 case 'moverAlWishlist':
                                     notificacionCorrecto(respuesta.mensaje, 100, 800);
                                     break
+                                case 'addArticuloWishlist':
+                                    notificacionCorrecto(respuesta.mensaje, 100, 1000)
+                                    break
+                                case 'eliminarArticuloWishlist':
+                                    exitoEliminarArticulo(respuesta.mensaje);
                                 default:
                                     break;
                             }
@@ -74,6 +84,7 @@
                                         break
 
                                     default:
+                                        notificacionError('Hubo un error al realizar esta acción', 100, 850);
                                         break;
                                 }
                             }
@@ -205,6 +216,32 @@
             }
         } //
 
+        function addArticuloWishlist() {
+            let idArticulo = btnAddCarrito.getAttribute('data-id-articulo');
+            let controller = 'wishlist';
+            let metodo = 'addArticulo';
+            let datos = new FormData;
+            datos.append('id_articulo', idArticulo);
+            peticionAjax(controller, metodo, datos);
+        }
+
+        function eliminarArticuloWishlist(e) {
+            e.preventDefault();
+            let btn = e.target;
+            if (btn.getAttribute('data-accion') == 'eliminar-wishlist') {
+                notificacionConfirm('¿Esta seguro de eliminar este articulo del carrito?', eliminar);
+
+                function eliminar() {
+                    let idArticulo = btn.getAttribute('data-id-articulo');
+                    let controller = 'wishlist';
+                    let metodo = 'eliminarArticulo';
+                    let datos = new FormData;
+                    datos.append('id_articulo', idArticulo);
+                    peticionAjax(controller, metodo, datos);
+                    eliminarArticuloWishlistHtml(btn)
+                } //eliminar
+            }
+        }
 
 
         ///////////////////////////////////////////////////////////////
@@ -261,7 +298,7 @@
             } //for
             return valor
         } //
-
+        //Elimina el html del item y reinicia el calculo del total
         function eliminarArticuloCarritoHtml(btn) {
             btn.parentElement.parentElement.parentElement.parentElement.remove();
             if (document.querySelectorAll('.producto').length > 0) {
@@ -272,6 +309,14 @@
                 let cero = 0;
                 document.querySelector('#sub-total').innerText = cero.toFixed(2);
                 document.querySelector('#total').innerHTML = cero.toFixed(2);
+            }
+        }
+
+        function eliminarArticuloWishlistHtml(btn) {
+            btn.parentElement.parentElement.parentElement.parentElement.remove();
+            if (document.querySelectorAll('.producto').length == 0) {
+                document.querySelector('.lista-productos').innerHTML = `<p style="margin:4.2rem;font-size:2.2rem">No hay items en el carrito</p>`;
+
             }
         }
 

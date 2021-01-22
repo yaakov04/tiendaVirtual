@@ -4,7 +4,7 @@
         <div class="lista-productos">
            
         <?php   
-        //echo checkCarritoItems();
+        echo checkWishlistItems();
         foreach ($_SESSION['wishlist'] as $producto) {?>
     
             <div class="producto contenedor-flex">
