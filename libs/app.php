@@ -29,11 +29,28 @@ class App{
             $controller = new $url[0];
             $controller->loadModel($url[0]);
 
+            // # elementos del arreglo
+            $nparam = sizeof($url);
+            if ($nparam>1) {
+                if ($nparam>2) {
+                    $param = array();
+                    for ($i=2; $i <$nparam ; $i++) { 
+                        array_push($param, $url[$i]);
+                    }//for
+                    $controller->{$url[1]}($param);
+                }else{
+                    $controller->{$url[1]}();
+                }
+            }else{
+                $controller->render();
+            }
+
+            /*//carga el metodo
             if (isset($url[1])) {
                 $controller->{$url[1]}();
             }else{
                 $controller->render();
-            }
+            }*/
 
         }else{
             $controller= new Falla();

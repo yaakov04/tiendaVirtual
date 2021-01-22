@@ -5,7 +5,7 @@
 
 <?php while($categorias=$this->categorias->fetch_assoc()){ ?>
 
-            <a href="#" class="categoria">
+            <a href="<?php echo URL .'categorias/mostrar/'. $categorias['nombre_categoria']?>" class="categoria">
             <?php echo $categorias['categoria'] ?>
             </a>
              <!--Categoria-->
