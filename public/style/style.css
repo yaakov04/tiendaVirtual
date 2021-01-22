@@ -391,6 +391,11 @@ section.contenedor h2 {
     padding: 1.5rem;
 }
 
+.precio-wishlist {
+    align-items: center;
+    justify-content: center;
+}
+
 
 /**Carrito**/
 

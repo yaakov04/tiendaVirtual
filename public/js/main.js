@@ -89,7 +89,6 @@
 
         function pagarArticuloCarrito(e) {
             let btn = e.target;
-            console.log(btn)
             if (btn.getAttribute('data-accion') == 'pagar-articulo') {
                 let idArticulo = btn.getAttribute('data-id-articulo');
                 window.location.href = `http://localhost/elPuestito/checkout?id_articulo=${idArticulo}&pagar=true&accion=pagar_articulo_carrito#confirma_direccion`;

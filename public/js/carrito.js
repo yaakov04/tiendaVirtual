@@ -1,4 +1,4 @@
-if (document.querySelector('.lista-productos')) {
+if (document.querySelector('.lista-productos') && document.querySelector('.resumen')) {
     let carrito = document.querySelector('.lista-productos');
     if (document.querySelectorAll('.producto').length > 0) {
         totalCarrito(carrito);
