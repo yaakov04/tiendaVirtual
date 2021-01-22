@@ -70,6 +70,11 @@ class WishList extends Controller{
             unset($_SESSION['carrito'][$id_articulo]);
             if (isset($_SESSION['wishlist'][$id_articulo])) {
                 $_SESSION['wishlist'][$id_articulo]['cantidad']+=(int)$cantidad;
+                $respuesta=array(
+                'respuesta'=>'exito',
+                'tipo'=>'addArticuloWishlist',//++
+                'mensaje'=>'Se añadio el articulo: '.$_SESSION['wishlist'][$articulo['id']]['nombre'].' X'.$_SESSION['wishlist'][$articulo['id']]['cantidad'].' al wishlist'
+            );
             }else{
                 $_SESSION['wishlist'][$id_articulo]=$articulo;
                 $respuesta=array(

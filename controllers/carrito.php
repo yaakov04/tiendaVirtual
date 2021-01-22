@@ -60,6 +60,42 @@ class Carrito extends Controller{
         
         die(json_encode($respuesta));
     }
+
+    function artWishlistToCarrito(){
+        $id_articulo=$_POST['id_articulo'];
+        $cantidad=$_POST['cantidad'];
+        //Comprobar si existe art en el wishlist
+        if (isset($_SESSION['wishlist'][$id_articulo])) {
+            //existe->guarda item y comprueba si existe en el carrito
+            $articulo =$_SESSION['wishlist'][$id_articulo];
+            unset($_SESSION['wishlist'][$id_articulo]);
+            if (isset($_SESSION['carrito'][$id_articulo])) {
+                //existe->cantida+=
+                $_SESSION['carrito'][$id_articulo]['cantidad']+=(int)$cantidad;
+                $respuesta=array(
+                    'respuesta'=>'exito',
+                    'tipo'=>'addArticuloCarrito',//++
+                    'mensaje'=>'Se añadio el articulo: '.$_SESSION['carrito'][$articulo['id']]['nombre'].' X'.$_SESSION['carrito'][$articulo['id']]['cantidad'].' al carrito'
+                );
+            }else{
+                //¬existe->addItem
+                $_SESSION['carrito'][$id_articulo]=$articulo;
+                $respuesta=array(
+                    'respuesta'=>'exito',
+                    'tipo'=>'addArticuloCarrito',
+                    'mensaje'=> 'El articulo: '.$_SESSION['carrito'][$articulo['id']]['nombre'].' se añadio correctamente'
+                );
+            }
+        }else{
+            //¬existe->notifica
+            $respuesta=array(
+                'respuesta'=>'error',
+                'tipo'=>'moverAlWishlist',
+                'mensaje'=>'No existe el articulo en el wish list'
+            );
+        }
+        die(json_encode($respuesta));
+    }
     
 
 

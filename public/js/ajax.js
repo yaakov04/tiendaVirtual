@@ -26,7 +26,8 @@
             if (carritoListaArticulos) {
                 carritoListaArticulos.addEventListener('click', eliminarArticulo);
                 carritoListaArticulos.addEventListener('click', moverWishlist);
-                carritoListaArticulos.addEventListener('click', eliminarArticuloWishlist)
+                carritoListaArticulos.addEventListener('click', eliminarArticuloWishlist);
+                carritoListaArticulos.addEventListener('click', moverCarrito);
             }
             if (btnAddWishlist) {
                 btnAddWishlist.addEventListener('click', addArticuloWishlist);
@@ -238,8 +239,26 @@
                     let datos = new FormData;
                     datos.append('id_articulo', idArticulo);
                     peticionAjax(controller, metodo, datos);
-                    eliminarArticuloWishlistHtml(btn)
+                    eliminarArticuloWishlistHtml(btn);
                 } //eliminar
+            }
+        }
+
+        function moverCarrito(e) {
+            e.preventDefault();
+            let btn = e.target;
+            if (btn.getAttribute('data-accion') == 'mover-carrito') {
+                let idArticulo = btn.getAttribute('data-id-articulo');
+                console.log(btn.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerText);
+                let cantidad = btn.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerText;
+                cantidad = parseInt(cantidad.replace('X', ''));
+                let controller = 'carrito';
+                let metodo = 'artWishlistToCarrito';
+                let datos = new FormData;
+                datos.append('id_articulo', idArticulo);
+                datos.append('cantidad', cantidad);
+                peticionAjax(controller, metodo, datos);
+                eliminarArticuloWishlistHtml(btn);
             }
         }
 
