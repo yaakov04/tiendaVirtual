@@ -1,6 +1,6 @@
 <?php require 'views/header.php';
 ?>
-<main class="contenedor pagina-wishlist">
+<main class="contenedor pagina-wishlist pagina-carrito">
         <h2>Carrito</h2>
         <div class="lista-productos">
 <?php   

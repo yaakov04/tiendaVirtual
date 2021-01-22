@@ -321,7 +321,7 @@
         function eliminarArticuloCarritoHtml(btn) {
             btn.parentElement.parentElement.parentElement.parentElement.remove();
             if (document.querySelectorAll('.producto').length > 0) {
-                totalCarrito(document.querySelector('.lista-productos'));
+                totalCarrito(document.querySelector('.lista-productos'), tenerCantidad, tenerPrecio);
             } else {
                 document.querySelector('.lista-productos').innerHTML = `<p style="margin:4.2rem;font-size:2.2rem">No hay items en el carrito</p>`;
                 document.querySelector('.fa-shopping-cart').style.color = '#217535ff';

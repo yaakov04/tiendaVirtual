@@ -1,12 +1,12 @@
-if (document.querySelector('.lista-productos') && document.querySelector('.resumen')) {
+if (document.querySelector('.lista-productos') && document.querySelector('.resumen') && document.querySelector('.pagina-carrito')) {
     let carrito = document.querySelector('.lista-productos');
     if (document.querySelectorAll('.producto').length > 0) {
-        totalCarrito(carrito);
+        totalCarrito(carrito, tenerCantidad, tenerPrecio);
     }
 
 }
 
-function totalCarrito(carrito) {
+function totalCarrito(carrito, tenerCantidad, tenerPrecio) {
     let listaItems = document.querySelectorAll('.producto');
     let precios = null;
     let cantidades = null;
