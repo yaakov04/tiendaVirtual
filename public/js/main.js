@@ -46,6 +46,24 @@
             let btnComprarArticulo = document.querySelector('#btn-comprar-articulo-nologin');
             btnComprarArticulo.addEventListener('click', notificacionNoLogin);
         }
+        let contInput = 0;
+        if (document.querySelector('#btn-password')) {
+            let btnPassword = document.querySelector('#btn-password');
+            let newPassword = document.querySelector('#new-password');
+            let confirmPassword = document.querySelector('#confirm-password');
+            btnPassword.disabled = true;
+            validarBtnPassword(btnPassword, newPassword, confirmPassword);
+
+            confirmPassword.addEventListener('input', function() {
+                validarPassword(newPassword, confirmPassword, btnPassword);
+            });
+            newPassword.addEventListener('input', function() {
+                console.log(contInput)
+                if (contInput > 0) {
+                    validarPassword(newPassword, confirmPassword, btnPassword);
+                }
+            });
+        }
 
         function validacionForm(form) {
             let inputs = form.querySelectorAll('input');
@@ -112,6 +130,45 @@
             window.location.href = `http://localhost/elPuestito/checkout?id_articulo=${idArticulo}&cantidad=${cantidad}&pagar=true&accion=pagar_articulo#confirma_direccion`
 
         }
+
+        function validarBtnPassword(btn, newP, conP) {
+            if (btn.disabled && newP.value == '' && conP.value == '') {
+                btn.style.backgroundColor = '#61c178';
+                btn.style.color = '#80de97';
+            }
+        }
+
+        function validarPassword(newPassword, confirmPassword, btnPassword) {
+            contInput = 1;
+
+            if (!(newPassword.value == '' || confirmPassword == '')) {
+                if (newPassword.value == confirmPassword.value) {
+                    borderGreen();
+                } else {
+                    borderRed();
+                }
+            } else {
+                borderRed();
+            }
+
+            function borderRed() {
+                newPassword.style.border = '1px solid red';
+                confirmPassword.style.border = '1px solid red';
+                btnPassword.disabled = true;
+                btnPassword.style.backgroundColor = '#61c178';
+                btnPassword.style.color = '#80de97';
+            }
+
+            function borderGreen() {
+                newPassword.style.border = '1px solid #217535';
+                confirmPassword.style.border = '1px solid #217535';
+                btnPassword.disabled = false;
+                btnPassword.style.backgroundColor = '#37c258';
+                btnPassword.style.color = '#ffffff';
+            }
+        }
+
+
 
 
     }); //DOM CONTENT LOADED

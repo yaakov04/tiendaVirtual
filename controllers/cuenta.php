@@ -33,6 +33,9 @@ class Cuenta extends Controller{
         die(json_encode($respuesta));
     }
     
+    function cambiar_password(){
+        $this->view->render('cuenta/password');
+    }
 
 
 

@@ -6,16 +6,7 @@
 <section>
     <h2>Detalles de la cuenta</h2>
     <div class="contenedor-flex detalles-cuenta">
-        <aside>
-            <div class="profile-img">
-                <img src="<?php echo URL; ?>public/img/avatar-1577909_640.png" alt="">
-            </div>
-            <nav class="nav-cuenta">
-                <a href="#">Ver pedidos</a>
-                <a href="<?php echo URL.'wishlist' ?>">Ver wish list</a>
-                <a href="#">Cambiar contraseña</a>
-            </nav>
-        </aside>
+        <?php require 'sidebar.php' ?>
         <form class="formulario-cuenta" action="">
             <fieldset>
                 <label for="username">Nombre de usuario:</label>
