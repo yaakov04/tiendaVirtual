@@ -16,7 +16,21 @@ class Cuenta extends Controller{
     }
 
     function ActualizarDatos(){
-
+        $consultaDB = $this->model->ActualizarDatosDB($_POST);
+        if ($consultaDB=='exito') {
+            $respuesta=array(
+                'respuesta'=> $consultaDB,
+                'tipo' => 'actualizarDatosCuenta',
+                'mensaje' => 'Los datos del usuario con id: '.$_SESSION['id'].' se actualizaron correctamente'
+            );
+        }else{
+            $respuesta=array(
+                'respuesta'=> 'error',
+                'tipo' => 'actualizarDatosCuenta',
+                'mensaje' => 'Hubo un error al actualizar los datos'
+            );
+        }
+        die(json_encode($respuesta));
     }
     
 

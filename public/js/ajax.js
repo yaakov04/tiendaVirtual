@@ -70,6 +70,9 @@
                                     break
                                 case 'eliminarArticuloWishlist':
                                     exitoEliminarArticulo(respuesta.mensaje);
+                                case 'actualizarDatosCuenta':
+                                    notificacionCorrecto(respuesta.mensaje, 100, 1000);
+                                    break
                                 default:
                                     break;
                             }
@@ -83,7 +86,8 @@
                                     case 'login':
                                         errorLogin();
                                         break
-
+                                    case 'actualizarDatosCuenta':
+                                        notificacionError(respuesta.mensaje, 100, 1000)
                                     default:
                                         notificacionError('Hubo un error al realizar esta acción', 100, 850);
                                         break;
@@ -157,7 +161,10 @@
         function actualizarDatos(e) {
             e.preventDefault();
             let valores = obtenerValoresForm(btnActualizarCuenta);
-            //console.log(valores);
+            let datos = insertandoDatosFormData(valores);
+            let controller = 'cuenta';
+            let metodo = 'ActualizarDatos';
+            peticionAjax(controller, metodo, datos);
         }
 
         //Agrega articulos al carrito

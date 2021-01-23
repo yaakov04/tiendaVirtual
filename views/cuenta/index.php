@@ -18,6 +18,8 @@
         </aside>
         <form class="formulario-cuenta" action="">
             <fieldset>
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" name="username" id="username" value="<?php echo $datos['usuario'] ?>">
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" value="<?php echo $datos['nombre'] ?>">
                 <label for="apellido">Apellido:</label>
