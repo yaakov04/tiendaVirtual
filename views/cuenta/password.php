@@ -6,7 +6,7 @@
     <h2>Detalles de la cuenta</h2>
     <div class="contenedor-flex detalles-cuenta">
         <?php require 'sidebar.php' ?>
-        <form class="formulario-password formulario-cuenta" action="">
+        <form class="formulario-password formulario-cuenta" action="<?php echo URL .'cuenta/cambiar_password/cambiar' ?>" method="post">
             <fieldset>
                 
             <label for="new-password">Escriba su nueva contraseña:</label>
