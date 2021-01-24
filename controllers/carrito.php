@@ -96,6 +96,30 @@ class Carrito extends Controller{
         }
         die(json_encode($respuesta));
     }
+
+    function guardarCarrito(){
+        $consultaDB=$this->model->existeRegistro();
+        $existe=$consultaDB;
+        //comprobar usuario en la tabla carrito
+        if ($existe) {
+            //$respuesta='existe';
+            $consultaDB=$this->model->guardarCarrito();
+            $respuesta=array(
+                'respuesta'=>$consultaDB,
+                'tipo'=>'guardarCarrito'
+            );
+        }else{
+            $consultaDB=$this->model->insertCarrito();
+            $respuesta=array(
+                'respuesta'=>$consultaDB,
+                'tipo'=>'guardarCarrito'
+            );
+        }
+        
+        //$consultaDB= $this->model->guardarCarritoDB();*/
+        die(json_encode($respuesta));
+                        
+    }
     
 
 

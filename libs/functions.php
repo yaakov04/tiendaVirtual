@@ -12,7 +12,7 @@ function checkLoginNavCuenta(){
         if ($_SESSION['login']==true) {
             return '
                     <li><a href="'.URL.'cuenta">Ver perfil</a></li>
-                    <li><a href="'.URL.'login?sesion=finalizada">Cerrar sesion</a></li>
+                    <li><a id="logout" href="'.URL.'login?sesion=finalizada">Cerrar sesion</a></li>
                 ';
         }
     }else{

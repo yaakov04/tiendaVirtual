@@ -6,7 +6,7 @@
         let btnAddCarrito = document.querySelector('#btn-add-carrito-login');
         let carritoListaArticulos = document.querySelector('.lista-productos');
         let btnAddWishlist = document.querySelector('#btn-add-wishlist-login');
-
+        let btnLogout = document.querySelector('#logout');
 
         listeners();
 
@@ -31,6 +31,9 @@
             }
             if (btnAddWishlist) {
                 btnAddWishlist.addEventListener('click', addArticuloWishlist);
+            }
+            if (btnLogout) {
+                btnLogout.addEventListener('click', guardarCartWish);
             }
 
         } //listeners
@@ -267,6 +270,18 @@
                 peticionAjax(controller, metodo, datos);
                 eliminarArticuloWishlistHtml(btn);
             }
+        }
+
+        function guardarCartWish(e) {
+            e.preventDefault();
+            guardarCarrito();
+        }
+
+        function guardarCarrito() {
+            let controller = 'carrito';
+            let metodo = 'guardarCarrito';
+            let datos = null;
+            peticionAjax(controller, metodo, datos);
         }
 
 
