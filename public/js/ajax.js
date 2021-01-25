@@ -79,12 +79,10 @@
                                     notificacionCorrecto(respuesta.mensaje, 100, 1000);
                                     break
                                 case 'guardarCarrito':
-                                    //window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
                                     cartSave = true;
                                     cerrarSesion(cartSave, wishSave);
                                     break
                                 case 'guardarWishlist':
-                                    //window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
                                     wishSave = true;
                                     cerrarSesion(cartSave, wishSave);
                                     break
@@ -166,9 +164,16 @@
             peticionAjax(controller, metodo, datos);
         }
 
+        function getWishlist(datos) {
+            let controller = 'wishlist';
+            let metodo = 'getWishlist';
+            peticionAjax(controller, metodo, datos);
+        }
+
         function exitoLogin() {
             notificacionCorrecto('Inicio de sesion correcto', 100, 800);
             getCarrito(null);
+            getWishlist(null);
             setTimeout(() => {
                 window.location.href = "http://localhost/elPuestito/Main";
             }, 850);

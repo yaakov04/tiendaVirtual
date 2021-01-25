@@ -119,6 +119,15 @@ class WishList extends Controller{
         
         //$consultaDB= $this->model->guardarCarritoDB();*/
         die(json_encode($respuesta));
+    }//
+
+    function getWishlist(){
+        $consultaDB=$this->model->getWishlist();
+        $resultado=$consultaDB->fetch_assoc();
+        $wishlist = json_decode($resultado['productos'], true);
+        $_SESSION['wishlist']=$wishlist;
+        die(json_encode($wishlist));
+    
     }
 
 
