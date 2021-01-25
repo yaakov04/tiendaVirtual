@@ -77,7 +77,7 @@
                                     notificacionCorrecto(respuesta.mensaje, 100, 1000);
                                     break
                                 case 'guardarCarrito':
-                                    window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
+                                    //window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
                                     break
                                 default:
                                     break;
@@ -284,13 +284,19 @@
 
         function guardarCartWish(e) {
             e.preventDefault();
-            guardarCarrito();
+            guardarCarrito(null);
+            guardarWishlist(null);
         }
 
-        function guardarCarrito() {
+        function guardarCarrito(datos) {
             let controller = 'carrito';
             let metodo = 'guardarCarrito';
-            let datos = null;
+            peticionAjax(controller, metodo, datos);
+        }
+
+        function guardarWishlist(datos) {
+            let controller = 'wishlist';
+            let metodo = 'guardarWishlist';
             peticionAjax(controller, metodo, datos);
         }
 

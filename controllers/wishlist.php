@@ -95,6 +95,30 @@ class WishList extends Controller{
         
 
         die(json_encode($respuesta));
+    }//
+
+    function guardarWishlist(){
+        $consultaDB=$this->model->existeRegistro();
+        $existe=$consultaDB;
+        //comprobar usuario en la tabla carrito
+        if ($existe) {
+            //existe->guardaWishlist
+            $consultaDB=$this->model->guardarWishlist();
+            $respuesta=array(
+                'respuesta'=>$consultaDB,
+                'tipo'=>'guardarWishlist'
+            );
+        }else{
+            //¬existe->creaRegistro
+            $consultaDB=$this->model->insertWishlist();
+            $respuesta=array(
+                'respuesta'=>$consultaDB,
+                'tipo'=>'guardarWishlist'
+            );
+        }
+        
+        //$consultaDB= $this->model->guardarCarritoDB();*/
+        die(json_encode($respuesta));
     }
 
 
