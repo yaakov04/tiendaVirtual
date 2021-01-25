@@ -15,11 +15,11 @@ class Categorias extends Controller{
         if (!$param==null) {
             $categoria=$param[0];
             $consultaDB=$this->model->mostrarCategoria($categoria);
-            //$resultado= $consultaDB->fetch_assoc();
-            echo '<pre>';
-            //var_dump($consultaDB->fetch_assoc());
-            echo '</pre>';
             $this->view->categorias =$consultaDB;
+            //$this->view->nombreCat=[];
+            $consultaDB=$this->model->getCatname($categoria);
+            $resultado=$consultaDB->fetch_assoc();
+            $this->view->nombreCat=$resultado['categoria'];
             $this->view->render('categorias/categoria');
         }else{
             $controller= new Falla();

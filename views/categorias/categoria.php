@@ -1,6 +1,8 @@
 <?php require 'views/header.php';?>
 <main class="contenedor pagina-lista-pedidos">
-        <h2>Query</h2>
+
+
+        <h2> <?php echo $this->nombreCat; ?></h2>
         <div class="grid-container productos">
 
         <?php while($producto=$this->categorias->fetch_assoc()){?>
