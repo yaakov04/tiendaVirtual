@@ -38,7 +38,8 @@
 
         } //listeners
 
-
+        let cartSave = false;
+        let wishSave = false;
         //Ajax
         function peticionAjax(controller, metodo, datos) {
             //peticion ajax
@@ -51,6 +52,7 @@
                     if (this.status === 200) {
                         respuesta = JSON.parse(xhr.responseText);
                         console.log(respuesta);
+
                         if (respuesta.respuesta == 'exito') {
                             switch (respuesta.tipo) {
                                 case 'regitrar':
@@ -78,6 +80,13 @@
                                     break
                                 case 'guardarCarrito':
                                     //window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
+                                    cartSave = true;
+                                    cerrarSesion(cartSave, wishSave);
+                                    break
+                                case 'guardarWishlist':
+                                    //window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
+                                    wishSave = true;
+                                    cerrarSesion(cartSave, wishSave);
                                     break
                                 default:
                                     break;
@@ -377,11 +386,13 @@
             }
         }
 
-        function cerrarSesion(carritoSave = false, wishlistSave = false) {
+        function cerrarSesion(carritoSave, wishlistSave) {
             if (carritoSave && wishlistSave) {
                 window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
             } else {
-                alert('No se guardo el carrito');
+                console.log(carritoSave);
+                console.log(wishlistSave);
+                console.log('no redireccion');
             }
         }
 
