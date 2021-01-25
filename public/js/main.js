@@ -46,6 +46,10 @@
             let btnComprarArticulo = document.querySelector('#btn-comprar-articulo-nologin');
             btnComprarArticulo.addEventListener('click', notificacionNoLogin);
         }
+        if (document.querySelector('#in_stock')) {
+            let artStock = parseInt(document.querySelector('#in_stock').innerHTML);
+            console.log(artStock);
+        }
         let contInput = 0;
         if (document.querySelector('#btn-password')) {
             let btnPassword = document.querySelector('#btn-password');
@@ -81,14 +85,16 @@
         } //
 
         function adicionInput() {
-
+            let artStock = parseInt(document.querySelector('#in_stock').innerHTML);
             let inputValue = document.querySelector('input#number').value;
-            if (inputValue == '') {
-                document.querySelector('input#number').value = 1;
-            } else {
-                inputValue = parseInt(inputValue);
-                document.querySelector('input#number').value = inputValue + 1;
-                //console.log(inputValue);
+            if (inputValue < artStock) {
+                if (inputValue == '') {
+                    document.querySelector('input#number').value = 1;
+                } else {
+                    inputValue = parseInt(inputValue);
+                    document.querySelector('input#number').value = inputValue + 1;
+                    //console.log(inputValue);
+                }
             }
         } //
 

@@ -13,7 +13,7 @@
                 </div>
             </div>
             <aside class="info-producto">
-                <p class="stock">En stock: <span><?php echo $articulo['stock']; ?></span></p>
+                <p class="stock">En stock: <span id="in_stock"><?php echo $articulo['stock']; ?></span></p>
                 <h2><?php echo $articulo['nombre_producto']; ?></h2>
                 <p class="precio">$ <?php echo $articulo['precio']; ?></p>
                 <p class="envio">Envio: <br><span>Gratis</span></p>
@@ -23,7 +23,7 @@
 
                     <div class="input-number contenedor-flex">
                         <button id="btn-input-number-menos" class="btn"><i class="fas fa-minus"></i></button>
-                        <input type="number" name="" id="number">
+                        <input readonly type="number" name="" id="number">
                         <button id="btn-input-number-mas" class="btn"><i class="fas fa-plus"></i></button>
                     </div>
 
