@@ -120,6 +120,14 @@ class Carrito extends Controller{
         die(json_encode($respuesta));
                         
     }
+    function getCarrito(){
+        $consultaDB=$this->model->getCarrito();
+        $resultado=$consultaDB->fetch_assoc();
+        $carrito = json_decode($resultado['productos'], true);
+        $_SESSION['carrito']=$carrito;
+        die(json_encode($carrito));
+    
+    }
     
 
 

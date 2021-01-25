@@ -76,6 +76,9 @@
                                 case 'actualizarDatosCuenta':
                                     notificacionCorrecto(respuesta.mensaje, 100, 1000);
                                     break
+                                case 'guardarCarrito':
+                                    window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
+                                    break
                                 default:
                                     break;
                             }
@@ -148,8 +151,15 @@
             }
         }
 
+        function getCarrito(datos) {
+            let controller = 'carrito';
+            let metodo = 'getCarrito';
+            peticionAjax(controller, metodo, datos);
+        }
+
         function exitoLogin() {
             notificacionCorrecto('Inicio de sesion correcto', 100, 800);
+            getCarrito(null);
             setTimeout(() => {
                 window.location.href = "http://localhost/elPuestito/Main";
             }, 850);
@@ -358,6 +368,14 @@
             if (document.querySelectorAll('.producto').length == 0) {
                 document.querySelector('.lista-productos').innerHTML = `<p style="margin:4.2rem;font-size:2.2rem">No hay items en el carrito</p>`;
 
+            }
+        }
+
+        function cerrarSesion(carritoSave = false, wishlistSave = false) {
+            if (carritoSave && wishlistSave) {
+                window.location.href = "http://localhost/elPuestito/login?sesion=finalizada";
+            } else {
+                alert('No se guardo el carrito');
             }
         }
 

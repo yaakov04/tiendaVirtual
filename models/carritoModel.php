@@ -86,6 +86,22 @@ class CarritoModel{
         }
 
        return $respuesta;
+    }//
+
+    public function getCarrito(){
+        if (isset($_SESSION['carrito'])&&$_SESSION['login']=='true') {
+            $id_user=$_SESSION['id'];
+            try{
+                require 'config/conexion_bd.php';
+                $sql= " SELECT productos FROM carrito WHERE id_usuario = $id_user ";
+                $resultado = $conexion->query($sql);
+                $conexion->close();
+                return $resultado;
+            }catch (Exception $e) {
+                echo 'error:' . $e;
+            }
+        }
+        
     }
       
 
