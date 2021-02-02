@@ -3,7 +3,7 @@
 <?php $articulo = $this->articulo->fetch_assoc();?>
         <section class="contenedor-flex">
             <div>
-                <img src="<?php echo URL; ?>public/img/<?php echo $articulo['img_producto'] ?>" alt="<?php echo $articulo['nombre_producto']; ?>">
+                <img src="<?php echo URL; ?>public/img/img_productos/<?php echo $articulo['img_producto'] ?>" alt="<?php echo $articulo['nombre_producto']; ?>">
                 <div class="contenedor-btn">
                     <a href="#" id="<?php echo checkLoginComprarArticulo(); ?>" data-id-articulo="<?php echo $articulo['id']; ?>" class="btn">Comprar</a>
                     <div class="contenedor-flex">

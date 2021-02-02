@@ -8,7 +8,7 @@
         <?php while($producto=$this->categorias->fetch_assoc()){?>
 
             <a href="<?php echo URL.'articulo?id='. $producto['id'] ?>" class="producto">
-                <img src="<?php echo URL.'public/img/'.$producto['img_producto'] ?>" alt="<?php echo $producto['nombre_producto'] ?>">
+                <img src="<?php echo URL.'public/img/img_productos/'.$producto['img_producto'] ?>" alt="<?php echo $producto['nombre_producto'] ?>">
                 <p><?php echo $producto['nombre_producto'] ?></p>
                 <p class="precio">$<?php echo $producto['precio'] ?></p>
             </a>

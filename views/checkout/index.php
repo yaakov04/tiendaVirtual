@@ -59,7 +59,7 @@ $articulos_pagar = $this->articulos_pagar;
         <div class="lista-productos">
         <?php foreach ($articulos_pagar as $producto) {?>
             <div class="producto contenedor-flex">
-                <div class="img"><img src="<?php echo URL.'public/img/'.$producto['img'] ?>" alt="<?php echo $producto['nombre'] ?>"></div>
+                <div class="img"><img src="<?php echo URL.'public/img/img_productos/'.$producto['img'] ?>" alt="<?php echo $producto['nombre'] ?>"></div>
                 <div class="detalles-producto detalles-producto-checkout">
                     <div class="encabezado contenedor-flex detalles-encabezado encabezado-checkout">
                         <div class="contenedor-txt">

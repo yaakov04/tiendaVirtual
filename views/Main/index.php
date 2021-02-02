@@ -17,7 +17,7 @@
             while($novedades=$this->novedades->fetch_assoc()){?>
             
                 <a href="<?php echo URL; ?>articulo?id=<?php echo $novedades['id'] ?>" class="producto">
-                    <img src="<?php echo URL; ?>public/img/<?php echo $novedades['img_producto'] ?>" alt="<?php echo $novedades['nombre_producto'] ?>">
+                    <img src="<?php echo URL; ?>public/img/img_productos/<?php echo $novedades['img_producto'] ?>" alt="<?php echo $novedades['nombre_producto'] ?>">
                     <p><?php echo $novedades['nombre_producto'] ?></p>
                     <p class="precio">$<?php echo $novedades['precio'] ?></p>
                 </a>

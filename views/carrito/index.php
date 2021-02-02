@@ -8,7 +8,7 @@
         foreach ($_SESSION['carrito'] as $producto) {?>
     
             <div class="producto contenedor-flex">
-                <div class="img"><img src="<?php echo URL.'public/img/'.$producto['img'] ?>" alt="joystick"></div>
+                <div class="img"><img src="<?php echo URL.'public/img/img_productos/'.$producto['img'] ?>" alt="<?php echo $producto['nombre'] ?>"></div>
                 <div class="detalles-producto">
                     <div class="encabezado contenedor-flex">
                         <div class="contenedor-txt">
