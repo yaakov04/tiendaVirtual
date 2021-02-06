@@ -6,6 +6,13 @@ if (document.querySelector('.lista-productos') && document.querySelector('.resum
 
 }
 
+if (document.querySelector('#btn-pagar-checkout')) {
+    let listaCheckout = document.querySelectorAll('.producto');
+    if (listaCheckout.length > 0) {
+        totalCarrito(listaCheckout, tenerCantidadCheckout, tenerPrecioCheckout);
+    }
+}
+
 function totalCarrito(carrito, tenerCantidad, tenerPrecio) {
     let listaItems = document.querySelectorAll('.producto');
     let precios = null;
@@ -17,6 +24,7 @@ function totalCarrito(carrito, tenerCantidad, tenerPrecio) {
         cantidades = tenerCantidad(listaItems, i);
         preciosTotales.push(precios * cantidades);
     }
+
 
     let subTotal = preciosTotales.reduce((a, b) => a + b);
 
@@ -37,4 +45,16 @@ function tenerPrecio(listaItems, i) {
     let precio = listaItems[i].children[1].children[0].children[1].innerText;
     precio = parseFloat(precio.replace('$', ''));
     return precio;
+}
+//listaItems[0].children[1].children[0].children[1].children
+function tenerPrecioCheckout(listaItems, i) {
+    let precio = listaItems[i].children[1].children[0].children[1].children[1].value;
+    precio = parseFloat(precio.replace('$', ''));
+    return precio;
+}
+
+function tenerCantidadCheckout(listaItems, i) {
+    let cantidad = listaItems[i].children[1].children[0].children[1].children[0].innerText;
+    cantidad = parseFloat(cantidad.replace('X', ''));
+    return cantidad;
 }

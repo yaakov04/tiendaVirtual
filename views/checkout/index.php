@@ -90,15 +90,15 @@ $articulos_pagar = $this->articulos_pagar;
                 <table>
                     <tr>
                         <td>Sub-total:</td>
-                        <td class="text-left">$ 300.00</td>
+                        <td class="text-left">$ <span id="sub-total">0.00</span></td>
                     </tr>
                     <tr>
                         <td>Envio:</td>
-                        <td class="text-left">$ 0.00</td>
+                        <td class="text-left">$ <span id="envio">0.00</span></td>
                     </tr>
                     <tr>
                         <td>Total:</td>
-                        <td class="text-left">$ 300.00</td>
+                        <td class="text-left">$ <span id="total">0.00</span></td>
                     </tr>
                 </table>
             </div>

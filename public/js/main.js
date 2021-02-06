@@ -116,7 +116,11 @@
         } //
 
         function pagarCarrito() {
-            window.location.href = "http://localhost/elPuestito/checkout?pagar=true&accion=pagar_carrito#confirma_direccion";
+            if (document.querySelectorAll('.producto').length > 0) {
+                window.location.href = "http://localhost/elPuestito/checkout?pagar=true&accion=pagar_carrito#confirma_direccion";
+            } else {
+                notificacionError('No hay items en el carrito', 100, 1200);
+            }
         }
 
         function pagarArticuloCarrito(e) {
