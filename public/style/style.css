@@ -178,6 +178,7 @@ section.contenedor h2 {
 
 .producto {
     flex: 0 0 calc(25% - 1rem);
+    min-width:21.5rem;
 }
 
 .producto p {
