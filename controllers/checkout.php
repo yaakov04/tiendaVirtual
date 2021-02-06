@@ -3,10 +3,13 @@ class Checkout extends Controller{
     function __construct(){
         parent::__construct();
         require_once 'config/sessions.php';
+        $this->view->datos_envio=[];
         $this->view->articulos_pagar = [];
     }
     function render(){ 
         if (isset($_GET['pagar'])&&$_GET['pagar']=='true'&&isset($_GET['accion'])) {
+            $consultaDB=$this->model->getDatosClientes($_SESSION['id']);
+            $this->view->datos_envio=$resultado=$consultaDB->fetch_assoc();
             switch ($_GET['accion']) {
                 case 'pagar_carrito':
                     //muesta todos los items del carrito

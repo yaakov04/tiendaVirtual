@@ -1,4 +1,5 @@
 <?php require 'views/header.php';
+$datos_envio=$this->datos_envio;
 $articulos_pagar = $this->articulos_pagar;
 ?>
 
@@ -11,7 +12,7 @@ $articulos_pagar = $this->articulos_pagar;
                     <div class="row">
                         <div class="input">
                             <label for="destinatario">Destinatario:</label>
-                            <input type="text" name="destinatario" id="destinatario" value="Jacob de Canterbury">
+                            <input type="text" name="destinatario" id="destinatario" value="<?php echo $datos_envio['nombre'].' '.$datos_envio['apellido'] ;?>">
                         </div>
 
                     </div>
@@ -20,12 +21,12 @@ $articulos_pagar = $this->articulos_pagar;
                     <div class="row">
                         <div class="input">
                             <label for="calle">Calle:</label>
-                            <input type="text" name="calle" id="calle" value="BAKER STREET">
+                            <input type="text" name="calle" id="calle" value="<?php echo $datos_envio['calle'] ;?>">
                         </div>
 
                         <div class="input">
                             <label for="numero">Numero:</label>
-                            <input class="w-35" type="text" name="numero" id="numero" value="221-B">
+                            <input class="w-35" type="text" name="numero" id="numero" value="<?php echo $datos_envio['numero'] ;?>">
                         </div>
 
 
@@ -33,12 +34,12 @@ $articulos_pagar = $this->articulos_pagar;
                     <div class="row">
                         <div class="input">
                             <label for="ciudad">Ciudad:</label>
-                            <input type="text" name="ciudad" id="ciudad" value="LONDON">
+                            <input type="text" name="ciudad" id="ciudad" value="<?php echo $datos_envio['ciudad'] ;?>">
                         </div>
 
                         <div class="input">
                             <label for="pais">Pais:</label>
-                            <input type="text" name="pais" id="pais" value="Inglaterra">
+                            <input type="text" name="pais" id="pais" value="<?php echo $datos_envio['pais'] ;?>">
                         </div>
 
                     </div>
@@ -46,7 +47,7 @@ $articulos_pagar = $this->articulos_pagar;
                     <div class="row">
                         <div class="input">
                             <label for="cp">C.P:</label>
-                            <input class="w-35" type="text" name="cp" id="cp" value="1200">
+                            <input class="w-35" type="text" name="cp" id="cp" value="<?php echo $datos_envio['cp'] ;?>">
                         </div>
                     </div>
 
@@ -102,7 +103,7 @@ $articulos_pagar = $this->articulos_pagar;
                 </table>
             </div>
             <div class="pagar-btn-container">
-                <button class="btn">Pagar</button>
+                <button id="btn-pagar-checkout" class="btn">Pagar</button>
             </div>
         </div>
     </div>

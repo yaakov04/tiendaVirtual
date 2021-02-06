@@ -7,6 +7,7 @@
         let carritoListaArticulos = document.querySelector('.lista-productos');
         let btnAddWishlist = document.querySelector('#btn-add-wishlist-login');
         let btnLogout = document.querySelector('#logout');
+        let btnPagar = document.querySelector('#btn-pagar-checkout');
 
         listeners();
 
@@ -34,6 +35,9 @@
             }
             if (btnLogout) {
                 btnLogout.addEventListener('click', guardarCartWish);
+            }
+            if (btnPagar) {
+                btnPagar.addEventListener('click', pagar)
             }
 
         } //listeners
@@ -312,6 +316,11 @@
             let controller = 'wishlist';
             let metodo = 'guardarWishlist';
             peticionAjax(controller, metodo, datos);
+        }
+
+        function pagar(e) {
+            e.preventDefault();
+            console.log(btnPagar);
         }
 
 
