@@ -320,7 +320,14 @@
 
         function pagar(e) {
             e.preventDefault();
-            console.log(btnPagar);
+            let controller = 'checkout';
+            let metodo = 'pagarCarrito';
+            let total = parseFloat(document.querySelector('#total').innerText);
+            let valores = obtenerValoresForm(document.querySelector('#confirmar'));
+            let datos = insertandoDatosFormData(valores);
+            datos.append('total', total);
+            //console.log(...datos);
+            peticionAjax(controller, metodo, datos);
         }
 
 

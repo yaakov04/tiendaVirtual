@@ -65,6 +65,59 @@ class Checkout extends Controller{
         //$this->view->render('checkout/index');
     }
 
+    function pagarCarrito(){
+        
+        $calle=$_POST['calle'];
+        $numero= $_POST['numero'];
+        $ciudad=$_POST['ciudad'];
+        $pais=$_POST['pais'];
+        $cp=$_POST['cp'];
+
+        $destinatario=$_POST['destinatario'];
+        $datos_envio="$calle $numero, $ciudad, $pais, $cp";
+        $carrito=$_SESSION['carrito'];
+        $total=(float)$_POST['total'];
+        $status=1;//No pagado
+
+        $consultaDB=$this->model->insertarVenta([
+            'datos_envio'=>$datos_envio,
+            'destinatario'=>$destinatario,
+            'status'=>$status,
+            'total'=>$total//total venta
+            ]);
+        $id_insertado=$consultaDB['id'];//id_venta
+        $resultado_venta=$consultaDB['respuesta'];
+        
+
+        foreach ($carrito as $item) {
+            if ($resultado_venta=='exito') {
+                $consultaDB=$this->model->insertarPedido([
+                    'id_venta'      =>$id_insertado,
+                    'id_producto'   =>$item['id'],
+                    'cantidad'      =>$item['cantidad'],
+                    'precio'        =>$item['precio'],
+                    'total'         =>$item['cantidad'] * (float)$item['precio']
+                ]);
+                if ($consultaDB=='exito') {
+                    $_SESSION['carrito']=array();
+                }
+                $respuesta=array(
+                    'respuesta'=>$consultaDB,
+                    'tipo'=>'insertarPedido',
+                    'mensaje'=>'El pedido se hizo correctamente'
+                );
+            }else{
+                $respuesta=array(
+                    'respuesta'=>'error',
+                    'tipo'=>'insertarPedido',
+                    'mensaje'=>'Hubo un error al hacer el pedido'
+                );
+            }
+        }//foreach
+
+        die(json_encode($respuesta));
+    }
+
 
    
 

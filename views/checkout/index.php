@@ -52,7 +52,7 @@ $articulos_pagar = $this->articulos_pagar;
                     </div>
 
                 </fieldset>
-                <div class="contenedor-btn btn-checkout"><a class="btn" href="#resumen-compra">Confirmar</a></div>
+                <div class="contenedor-btn btn-checkout"><a id="confirmar" class="btn" href="#resumen-compra">Confirmar</a></div>
             </form>
 
 

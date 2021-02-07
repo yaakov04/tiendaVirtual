@@ -23,7 +23,8 @@ public function mostrarCategorias(){
         try{
             require 'config/conexion_bd.php';
             //$sql= " SELECT * FROM productos JOIN categorias ON productos.categoria = categorias.id AND categorias.nombre_categoria = $categoria ";
-            $sql= " SELECT * FROM productos INNER JOIN categorias ON productos.categoria = categorias.id WHERE categorias.nombre_categoria = '$categoria' ";
+            //SELECT * FROM productos INNER JOIN categorias ON productos.categoria = categorias.id WHERE categorias.nombre_categoria = '$categoria'
+            $sql= "SELECT productos.id, productos.nombre_producto, productos.precio, productos.img_producto FROM productos INNER JOIN categorias ON productos.categoria = categorias.id WHERE categorias.nombre_categoria = '$categoria' " ;
 
             $resultado = $conexion->query($sql);
             $conexion->close();

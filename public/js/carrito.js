@@ -43,13 +43,19 @@ function tenerCantidad(listaItems, i) {
 
 function tenerPrecio(listaItems, i) {
     let precio = listaItems[i].children[1].children[0].children[1].innerText;
-    precio = parseFloat(precio.replace('$', ''));
+    //precio = parseFloat(precio.replace('$', ''));
+    precio = precio.replace('$', '');
+    precio = precio.replace(',', '');
+    precio = parseFloat(precio);
+    console.log(precio)
     return precio;
 }
 //listaItems[0].children[1].children[0].children[1].children
 function tenerPrecioCheckout(listaItems, i) {
     let precio = listaItems[i].children[1].children[0].children[1].children[1].value;
-    precio = parseFloat(precio.replace('$', ''));
+    precio = precio.replace('$', '');
+    precio = precio.replace(',', '');
+    precio = parseFloat(precio);
     return precio;
 }
 
