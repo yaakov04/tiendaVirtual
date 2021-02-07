@@ -47,30 +47,15 @@
         <section class="contenedor">
             <h2>Ofertas</h2>
             <div class="productos contenedor-flex">
-                <a href="producto.html" class="producto">
-                    <img src="<?php echo URL; ?>public/img/vestido_negro.png" alt="playera">
-                    <p>Playera</p>
-                    <p class="precio">$100.00</p>
+            <?php while($oferta=$this->ofertas->fetch_assoc()){?>
+                <a href="<?php echo URL; ?>articulo?id=<?php echo $oferta['id_producto'] ?>" class="producto">
+                    <img src="<?php echo URL; ?>public/img/img_productos/<?php echo $oferta['img_producto'] ?>" alt="<?php echo $oferta['nombre_producto'] ?>">
+                    <p><?php echo $oferta['nombre_producto'] ?></p>
+                    <p class="precio">$<?php echo $oferta['precio'] ?></p>
                 </a>
                 <!--./producto-->
-                <a href="producto.html" class="producto">
-                    <img src="<?php echo URL; ?>public/img/soporte_pendientes.png" alt="playera">
-                    <p>Playera</p>
-                    <p class="precio">$100.00</p>
-                </a>
-                <!--./producto-->
-                <a href="producto.html" class="producto">
-                    <img src="<?php echo URL; ?>public/img/reloj.png" alt="playera">
-                    <p>Playera</p>
-                    <p class="precio">$100.00</p>
-                </a>
-                <!--./producto-->
-                <a href="producto.html" class="producto">
-                    <img src="<?php echo URL; ?>public/img/mochila.jpg" alt="playera">
-                    <p>Playera</p>
-                    <p class="precio">$100.00</p>
-                </a>
-                <!--./producto-->
+            <?php }//endwhile ?>  
+               
             </div>
             <!--./productos-->
             <div class="contenedor-btn"><a class="btn" href="#">Ver más</a></div>

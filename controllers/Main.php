@@ -4,6 +4,7 @@ class Main extends Controller{
         parent::__construct();
         $this->view->novedades=[];
         $this->view->masVendidos=[];
+        $this->view->ofertas=[];
         
     }
     function render(){
@@ -11,8 +12,8 @@ class Main extends Controller{
        $this->view->novedades=$resultado;
        $consultaDB=$this->model->getMAsVendidos();
        $this->view->masVendidos=$consultaDB;
-        
-        
+       $consultaDB=$this->model->getOfertas();
+       $this->view->ofertas=$consultaDB;
         $this->view->render('Main/index');
     }
     function hola(){
