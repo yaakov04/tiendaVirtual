@@ -13,8 +13,7 @@
         <section class="contenedor">
             <h2>Novedades</h2>
             <div class="productos contenedor-flex">
-            <?php
-            while($novedades=$this->novedades->fetch_assoc()){?>
+            <?php while($novedades=$this->novedades->fetch_assoc()){?>
             
                 <a href="<?php echo URL; ?>articulo?id=<?php echo $novedades['id'] ?>" class="producto">
                     <img src="<?php echo URL; ?>public/img/img_productos/<?php echo $novedades['img_producto'] ?>" alt="<?php echo $novedades['nombre_producto'] ?>">
@@ -33,30 +32,14 @@
         <section class="contenedor">
             <h2>Más vendidos</h2>
             <div class="productos contenedor-flex">
-                <a href="producto.html" class="producto">
-                    <img src="<?php echo URL; ?>public/img/reloj.png" alt="playera">
-                    <p>Playera</p>
-                    <p class="precio">$100.00</p>
+            <?php while($masVendidos=$this->masVendidos->fetch_assoc()){?>
+                <a href="<?php echo URL; ?>articulo?id=<?php echo $masVendidos['id_producto'] ?>" class="producto">
+                    <img src="<?php echo URL; ?>public/img/img_productos/<?php echo $masVendidos['img_producto'] ?>" alt="<?php echo $masVendidos['nombre_producto'] ?>">
+                    <p><?php echo $masVendidos['nombre_producto'] ?></p>
+                    <p class="precio">$<?php echo $masVendidos['precio'] ?></p>
                 </a>
                 <!--./producto-->
-                <a href="producto.html" class="producto">
-                    <img src="<?php echo URL; ?>public/img/soporte_pendientes.png" alt="playera">
-                    <p>Playera</p>
-                    <p class="precio">$100.00</p>
-                </a>
-                <!--./producto-->
-                <a href="producto.html" class="producto">
-                    <img src="<?php echo URL; ?>public/img/joystick.jpg" alt="playera">
-                    <p>Playera</p>
-                    <p class="precio">$100.00</p>
-                </a>
-                <!--./producto-->
-                <a href="producto.html" class="producto">
-                    <img src="<?php echo URL; ?>public/img/collar_plata.png" alt="playera">
-                    <p>Playera</p>
-                    <p class="precio">$100.00</p>
-                </a>
-                <!--./producto-->
+            <?php }//endwhile ?>    
             </div>
             <!--./productos-->
             <div class="contenedor-btn"><a class="btn" href="#">Ver más</a></div>
