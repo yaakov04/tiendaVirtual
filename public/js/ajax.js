@@ -90,6 +90,9 @@
                                     wishSave = true;
                                     cerrarSesion(cartSave, wishSave);
                                     break
+                                case 'insertarPedido':
+                                    redirecionar();
+                                    break
                                 default:
                                     break;
                             }
@@ -415,6 +418,10 @@
                 console.log(wishlistSave);
                 console.log('no redireccion');
             }
+        }
+
+        function redirecionar() {
+            window.location.href = "http://localhost/elPuestito/pagar";
         }
 
 

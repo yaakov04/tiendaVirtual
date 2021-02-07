@@ -91,12 +91,13 @@ class Checkout extends Controller{
 
         foreach ($carrito as $item) {
             if ($resultado_venta=='exito') {
+                $precioItem=str_replace(',', '',$item['precio']);
                 $consultaDB=$this->model->insertarPedido([
                     'id_venta'      =>$id_insertado,
                     'id_producto'   =>$item['id'],
                     'cantidad'      =>$item['cantidad'],
-                    'precio'        =>$item['precio'],
-                    'total'         =>$item['cantidad'] * (float)$item['precio']
+                    'precio'        =>$precioItem,
+                    'total'         =>$item['cantidad'] * (float)$precioItem
                 ]);
                 if ($consultaDB=='exito') {
                     $_SESSION['carrito']=array();
