@@ -102,3 +102,11 @@ function paginadorAnterior($npaginas,$pSiguiente){
         return '<a href="'.URL.'todosProductos?pagina='.$pSiguiente.'"><i class="fas fa-angle-double-right"></i></a>';
     }
 }
+
+function comprobarEstado($estadoActual, $estado){
+   
+    if ($estadoActual>$estado||$estadoActual==$estado) {
+        return 'completo';
+    }
+        
+}
