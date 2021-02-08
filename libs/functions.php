@@ -84,3 +84,21 @@ function checkWishlistItems(){
         return '<p style="margin:4.2rem;font-size:2.2rem">No hay items en el carrito</p>';
     }
 }
+
+function paginadorActivo($i){
+    if ($i==$_GET['pagina']) {
+        return 'paginador-activo';
+    }
+}
+
+function paginadorSiguiente($pAnterior){
+    if ($_GET['pagina']>1) {
+        return '<a href="'.URL.'todosProductos?pagina='.$pAnterior.'"><i class="fas fa-angle-double-left"></i></a>';
+    }
+}
+
+function paginadorAnterior($npaginas,$pSiguiente){
+    if ($_GET['pagina']<$npaginas) {
+        return '<a href="'.URL.'todosProductos?pagina='.$pSiguiente.'"><i class="fas fa-angle-double-right"></i></a>';
+    }
+}

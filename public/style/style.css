@@ -178,7 +178,7 @@ section.contenedor h2 {
 
 .producto {
     flex: 0 0 calc(25% - 1rem);
-    min-width:21.5rem;
+    min-width: 21.5rem;
 }
 
 .producto p {
@@ -834,4 +834,37 @@ a.categoria {
 
 .campo-vacio {
     border-color: red;
+}
+
+
+/**paginador**/
+
+.pagindor-contenedor {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pagindor-contenedor a {
+    margin-right: .7rem;
+    background-color: #2e8a44;
+    color: white;
+    padding: 1.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+    border-radius: .5rem;
+    transition: background-color .2s ease-in-out;
+}
+
+.pagindor-contenedor a:last-of-type {
+    margin-right: 0;
+}
+
+.pagindor-contenedor a:hover {
+    background-color: #44d467;
+    color: #bffbce;
+}
+
+a.paginador-activo {
+    background-color: var(--verdeOscuro);
 }
