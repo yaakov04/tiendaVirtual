@@ -18,11 +18,11 @@
 
     </div>
     <div class="pagindor-contenedor">
-        <?php echo paginadorSiguiente($_GET['pagina']-1); ?>
+        <?php echo paginadorSiguiente($_GET['pagina']-1,'todosProductos?pagina='); ?>
         <?php for ($i=1;$i<$this->nPaginas+1;$i++) {?>
             <a class="<?php echo paginadorActivo($i) ?>" href="<?php echo URL.'todosProductos?pagina='.$i ?>"><?php echo $i ?></a>
         <?php } //for?>
-        <?php echo paginadorAnterior($this->nPaginas,$_GET['pagina']+1); ?>
+        <?php echo paginadorAnterior($this->nPaginas,$_GET['pagina']+1,'todosProductos?pagina='); ?>
     </div>
 </main>
 <?php require 'views/footer.php';?>

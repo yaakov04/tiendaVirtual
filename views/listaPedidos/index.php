@@ -38,7 +38,13 @@
         <!--./producto-->
         <?php }//while ?>
        
-
+        <div class="pagindor-contenedor">
+        <?php echo paginadorSiguiente($_GET['pagina']-1,'listaPedidos?pagina='); ?>
+        <?php for ($i=1;$i<$this->nPaginas+1;$i++) {?>
+            <a class="<?php echo paginadorActivo($i) ?>" href="<?php echo URL.'listaPedidos?pagina='.$i ?>"><?php echo $i ?></a>
+        <?php } //for?>
+        <?php echo paginadorAnterior($this->nPaginas,$_GET['pagina']+1,'listaPedidos?pagina='); ?>
+    </div>
 
     </main>
 

@@ -91,15 +91,16 @@ function paginadorActivo($i){
     }
 }
 
-function paginadorSiguiente($pAnterior){
+function paginadorSiguiente($pAnterior,$url){
     if ($_GET['pagina']>1) {
-        return '<a href="'.URL.'todosProductos?pagina='.$pAnterior.'"><i class="fas fa-angle-double-left"></i></a>';
+        //'todosProductos?pagina='
+        return '<a href="'.URL.$url.$pAnterior.'"><i class="fas fa-angle-double-left"></i></a>';
     }
 }
 
-function paginadorAnterior($npaginas,$pSiguiente){
+function paginadorAnterior($npaginas,$pSiguiente, $url){
     if ($_GET['pagina']<$npaginas) {
-        return '<a href="'.URL.'todosProductos?pagina='.$pSiguiente.'"><i class="fas fa-angle-double-right"></i></a>';
+        return '<a href="'.URL.$url.$pSiguiente.'"><i class="fas fa-angle-double-right"></i></a>';
     }
 }
 
