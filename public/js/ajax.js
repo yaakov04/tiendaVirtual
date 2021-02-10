@@ -324,11 +324,15 @@
         function pagar(e) {
             e.preventDefault();
             let controller = 'checkout';
-            let metodo = 'pagarCarrito';
+            let metodo = btnPagar.getAttribute('data-accion');
             let total = parseFloat(document.querySelector('#total').innerText);
             let valores = obtenerValoresForm(document.querySelector('#confirmar'));
             let datos = insertandoDatosFormData(valores);
+            let idArticulo = tenerIdArtCheckout();
+            let cantidadArticulo = tenerCantidadArtCheckout();
             datos.append('total', total);
+            datos.append('id_articulo', idArticulo);
+            datos.append('cantidad_articulo', cantidadArticulo);
             //console.log(...datos);
             peticionAjax(controller, metodo, datos);
         }
@@ -422,6 +426,22 @@
 
         function redirecionar() {
             window.location.href = "http://localhost/elPuestito/pagar";
+        }
+
+        function tenerIdArtCheckout() {
+            if (document.querySelectorAll('.lista-productos')[0].children.length == 1) {
+                let item = document.querySelectorAll('.lista-productos')[0].children[0];
+                return parseInt(item.querySelector('input').getAttribute('data-id-articulo'));
+            }
+        }
+
+        function tenerCantidadArtCheckout() {
+            if (document.querySelectorAll('.lista-productos')[0].children.length == 1) {
+                let item = document.querySelectorAll('.lista-productos')[0].children[0];
+                let valor = item.querySelectorAll('.contenedor-txt')[1].innerText;
+                valor = parseInt(valor.replace('X', ''));
+                return valor;
+            }
         }
 
 

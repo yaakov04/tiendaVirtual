@@ -119,3 +119,20 @@ function comprobarResultadosBusqueda($numResul){
         return'<p style="margin:4.2rem;font-size:2.2rem">No se han encontrado resultados para tu búsqueda</p>';
     }
 }
+
+function comprobarPagarCarritoOItem($accion){
+switch ($accion) {
+    case 'pagar_carrito':
+        return'pagarCarrito';
+        break;
+    case 'pagar_articulo':
+        return'pagarArticulo';
+        break;
+    case 'pagar_articulo_carrito':
+        return'pagarArticulo';
+        break;
+    default:
+        # code...
+        break;
+}
+}

@@ -103,7 +103,7 @@ $articulos_pagar = $this->articulos_pagar;
                 </table>
             </div>
             <div class="pagar-btn-container">
-                <button id="btn-pagar-checkout" class="btn">Pagar</button>
+                <button id="btn-pagar-checkout" data-accion="<?php echo comprobarPagarCarritoOItem($_GET['accion']) ?>" class="btn">Pagar</button>
             </div>
         </div>
     </div>

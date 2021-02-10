@@ -63,6 +63,61 @@ class Checkout extends Controller{
             $error->render();
         }
         //$this->view->render('checkout/index');
+    }//
+
+    function pagarArticulo(){
+        //mapeando datos
+        $cantidad=(int)$_POST['cantidad_articulo'];
+        $id_articulo=(int)$_POST['id_articulo'];
+        $calle=$_POST['calle'];
+        $numero= $_POST['numero'];
+        $ciudad=$_POST['ciudad'];
+        $pais=$_POST['pais'];
+        $cp=$_POST['cp'];
+        $destinatario=$_POST['destinatario'];
+        //formateando los datos de envío
+        $datos_envio="$calle $numero, $ciudad, $pais, $cp";
+        $status=1;//No pagado
+
+        //obteniendo el precio
+        $consultaDB=$this->model->getPrecioArticulo($id_articulo);
+        $precio =(float)$consultaDB->fetch_assoc()['precio'];
+        $total=$cantidad*$precio;
+
+        $consultaDB=$this->model->insertarVenta([
+            'datos_envio'=>$datos_envio,
+            'destinatario'=>$destinatario,
+            'status'=>$status,
+            'total'=>$total//total venta
+            ]);
+
+        $id_insertado=$consultaDB['id'];//id_venta
+        $resultado_venta=$consultaDB['respuesta'];
+
+        if ($resultado_venta=='exito') {
+            $consultaDB=$this->model->insertarPedido([
+                'id_venta'      =>$id_insertado,
+                'id_producto'   =>$id_articulo,
+                'cantidad'      =>$cantidad,
+                'precio'        =>$precio,
+                'total'         =>$cantidad*$precio
+            ]);
+            $respuesta=array(
+                'respuesta'=>$consultaDB,
+                'tipo'=>'insertarPedido',
+                'mensaje'=>'El pedido se hizo correctamente'
+            );
+        }else{
+            $respuesta=array(
+                'respuesta'=>'error',
+                'tipo'=>'insertarPedido',
+                'mensaje'=>'Hubo un error al hacer el pedido'
+            );
+        }
+
+        
+
+        return die(json_encode($respuesta));
     }
 
     function pagarCarrito(){

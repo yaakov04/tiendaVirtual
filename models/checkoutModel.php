@@ -85,6 +85,18 @@ class checkoutModel{
     
         return $respuesta;
     }//
+
+    public function getPrecioArticulo($id){
+        try{
+            require 'config/conexion_bd.php';
+            $sql= " SELECT precio  FROM `productos` WHERE id = $id";
+            $resultado = $conexion->query($sql);
+            return $resultado;
+            $conexion->close();
+        }catch (Exception $e) {
+            echo 'error:' . $e;
+        }
+    }
       
 
 
