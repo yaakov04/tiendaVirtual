@@ -29,7 +29,7 @@ class listaPedidosModel{
             $sql.=" INNER JOIN productos ON pedidos.id_producto = productos.id ";
             $sql.=" INNER JOIN estados ON estados.id = ventas.estatus "; 
             $sql.=" WHERE ventas.id_cliente = $id_cliente ";
-            $sql.=" ORDER BY ventas.fecha";
+            $sql.=" ORDER BY ventas.fecha DESC ";
             $sql.=" LIMIT ".$posicion.','.$limite;
             $resultado = $conexion->query($sql);
             return $resultado;
