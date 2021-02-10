@@ -50,6 +50,10 @@
             let artStock = parseInt(document.querySelector('#in_stock').innerHTML);
             console.log(artStock);
         }
+        let inputBusqueda = document.querySelector('input#busqueda');
+        if (inputBusqueda) {
+            inputBusqueda.addEventListener('change', busqueda);
+        }
         let contInput = 0;
         if (document.querySelector('#btn-password')) {
             let btnPassword = document.querySelector('#btn-password');
@@ -176,6 +180,11 @@
                 btnPassword.style.backgroundColor = '#37c258';
                 btnPassword.style.color = '#ffffff';
             }
+        }
+
+        function busqueda(e) {
+            let buscar = this.value;
+            window.location.href = `http://localhost/elPuestito/consultas/busqueda/${buscar}`;
         }
 
 

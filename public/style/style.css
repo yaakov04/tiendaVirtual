@@ -100,9 +100,11 @@ footer {
 }
 
 .input-search>input {
-    font-size: 3rem;
+    font-size: 1.5rem;
     border-radius: 5px;
     border: none;
+    padding: 1rem;
+    width: 100%;
 }
 
 .buscador .icon-search {

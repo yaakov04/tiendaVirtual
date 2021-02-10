@@ -111,3 +111,11 @@ function comprobarEstado($estadoActual, $estado){
     }
         
 }
+
+
+
+function comprobarResultadosBusqueda($numResul){
+    if ($numResul == 0) {
+        return'<p style="margin:4.2rem;font-size:2.2rem">No se han encontrado resultados para tu búsqueda</p>';
+    }
+}

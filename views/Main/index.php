@@ -1,6 +1,6 @@
 <?php require 'views/header.php';?>
     <div class="hero">
-        <a href="#" class="contenedor contenedor-flex">
+        <a href="<?php echo URL.'consultas/ofertas'; ?>" class="contenedor contenedor-flex">
             <p>Ofertas del día</p>
             <div class="img"><img src="<?php echo URL; ?>public/img/bolsas-hero.png" alt=""></div>
 
@@ -27,7 +27,7 @@
                 
             </div>
             <!--./productos-->
-            <div class="contenedor-btn"><a class="btn" href="#">Ver más</a></div>
+            <div class="contenedor-btn"><a class="btn" href="<?php echo URL.'consultas/novedades'; ?>">Ver más</a></div>
         </section>
         <section class="contenedor">
             <h2>Más vendidos</h2>
@@ -42,7 +42,7 @@
             <?php }//endwhile ?>    
             </div>
             <!--./productos-->
-            <div class="contenedor-btn"><a class="btn" href="#">Ver más</a></div>
+            <div class="contenedor-btn"><a class="btn" href="<?php echo URL.'consultas/masVendidos'; ?>">Ver más</a></div>
         </section>
         <section class="contenedor">
             <h2>Ofertas</h2>
@@ -58,7 +58,7 @@
                
             </div>
             <!--./productos-->
-            <div class="contenedor-btn"><a class="btn" href="#">Ver más</a></div>
+            <div class="contenedor-btn"><a class="btn" href="<?php echo URL.'consultas/ofertas'; ?>">Ver más</a></div>
         </section>
     </main>
 <?php require 'views/footer.php';?>
