@@ -18,7 +18,7 @@ class consultasModel{
         try{
             require 'config/conexion_bd.php';
             //SELECT id_producto, SUM(cantidad) as total_cantidad FROM pedidos GROUP BY id_producto ORDER BY total_cantidad DESC LIMIT 4
-            $sql= " SELECT pedidos.id_producto, SUM(pedidos.cantidad) as total_cantidad,productos.nombre_producto, productos.img_producto, productos.precio FROM pedidos INNER JOIN productos ON pedidos.id_producto = productos.id GROUP BY id_producto ORDER BY total_cantidad DESC LIMIT 8 ";
+            $sql= " SELECT pedidos.id_producto as id, SUM(pedidos.cantidad) as total_cantidad,productos.nombre_producto, productos.img_producto, productos.precio FROM pedidos INNER JOIN productos ON pedidos.id_producto = productos.id GROUP BY id_producto ORDER BY total_cantidad DESC LIMIT 8 ";
             $resultado = $conexion->query($sql);
             return $resultado;
             $conexion->close();
@@ -41,7 +41,7 @@ class consultasModel{
     public function getbusqueda($buscar){
         try{
             require 'config/conexion_bd.php';
-            $sql= " SELECT * FROM productos INNER JOIN categorias ON productos.categoria = categorias.id  WHERE productos.nombre_producto LIKE '%".$buscar."%' OR productos.descripcion_producto LIKE '%".$buscar."%' OR categorias.categoria LIKE '%".$buscar."%' ";
+            $sql= " SELECT productos.id as id, productos.nombre_producto, productos.img_producto, productos.precio  FROM productos INNER JOIN categorias ON productos.categoria = categorias.id  WHERE productos.nombre_producto LIKE '%".$buscar."%' OR productos.descripcion_producto LIKE '%".$buscar."%' OR categorias.categoria LIKE '%".$buscar."%' ";
             $resultado = $conexion->query($sql);
             return $resultado;
             $conexion->close();

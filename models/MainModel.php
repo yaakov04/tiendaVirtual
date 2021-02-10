@@ -29,7 +29,7 @@ class MainModel{
     public function getOfertas(){
         try{
             require 'config/conexion_bd.php';
-            $sql= " SELECT id, nombre_producto, img_producto, precio FROM `productos` WHERE oferta = 1 ORDER BY editado DESC LIMIT 4";
+            $sql= " SELECT id as id_producto, nombre_producto, img_producto, precio FROM `productos` WHERE oferta = 1 ORDER BY editado DESC LIMIT 4";
             $resultado = $conexion->query($sql);
             return $resultado;
             $conexion->close();
