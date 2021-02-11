@@ -81,8 +81,9 @@ class Checkout extends Controller{
 
         //obteniendo el precio
         $consultaDB=$this->model->getPrecioArticulo($id_articulo);
-        $precio =(float)$consultaDB->fetch_assoc()['precio'];
-        $total=$cantidad*$precio;
+        $precio =$consultaDB->fetch_assoc()['precio'];
+        $precio=str_replace(',','',$precio);
+        $total=$cantidad*(float)$precio;
 
         $consultaDB=$this->model->insertarVenta([
             'datos_envio'=>$datos_envio,
