@@ -62,6 +62,10 @@ img {
     display: flex;
 }
 
+.hidden {
+    opacity: 0;
+}
+
 .btn {
     padding: 1rem 2rem;
     background-color: var(--verdeOscuro);
@@ -516,6 +520,29 @@ section.contenedor h2 {
 
 .completo i {
     color: var(--verdeFont);
+}
+
+a.problema_pedido {
+    position: relative;
+}
+
+a.problema_pedido:hover.problema_pedido::after {
+    display: block;
+}
+
+a.problema_pedido::after {
+    content: "¿Problemas con tu pedido?";
+    color: white;
+    background-color: black;
+    font-size: 1.7rem;
+    text-transform: initial;
+    position: absolute;
+    width: 15rem;
+    bottom: -4rem;
+    left: -6rem;
+    display: none;
+    border-radius: .3rem;
+    transition: opacity .3s ease-in-out;
 }
 
 

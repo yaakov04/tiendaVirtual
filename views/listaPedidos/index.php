@@ -4,6 +4,12 @@
 
         <?php while ($pedido=$this->pedidos->fetch_assoc()) { ?>
         <div class="producto contenedor-flex">
+        <!--
+        <?php/*
+        echo '<pre>';
+        var_dump($pedido);
+        echo '</pre>'*/
+        ?>-->
             <div class="img"><img src="<?php echo URL.'public/img/img_productos/'.$pedido['img_producto'] ?>" alt="joystick"></div>
             <div class="detalles-producto">
                 <div class="encabezado contenedor-flex detalles-encabezado">
@@ -12,6 +18,11 @@
                     </div>
                     <div class="contenedor-txt">
                         <p class="text-strong ">x<?php echo $pedido['cantidad'] ?></p>
+                        
+                        
+                        <a href="#" class="problema_pedido"><i class="fas fa-exclamation-circle"></i></a>
+                        
+                        
                         <p class="text-strong ">Estado actual del pedido:</p>
                         <p><?php echo $pedido['estado'] ?></p>
                     </div>

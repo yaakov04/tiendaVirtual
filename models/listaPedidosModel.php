@@ -24,7 +24,7 @@ class listaPedidosModel{
         $limite=$datos['limit'];
         try{
             require 'config/conexion_bd.php';
-            $sql= " SELECT pedidos.id as id_pedido, pedidos.cantidad, ventas.id_cliente as cliente_id, ventas.estatus as id_estado, estados.estado, productos.nombre_producto, productos.img_producto FROM pedidos ";
+            $sql= " SELECT pedidos.id as id_pedido, pedidos.cantidad, ventas.id as venta_id, ventas.id_cliente as cliente_id, ventas.estatus as id_estado, estados.estado, productos.nombre_producto, productos.img_producto FROM pedidos ";
             $sql.=" INNER JOIN ventas ON pedidos.id_venta = ventas.id "; 
             $sql.=" INNER JOIN productos ON pedidos.id_producto = productos.id ";
             $sql.=" INNER JOIN estados ON estados.id = ventas.estatus "; 
