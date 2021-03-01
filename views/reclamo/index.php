@@ -16,7 +16,7 @@
             </div>
             <div class="input-group input-column">
                 <label for="mensaje">Mensaje:</label>
-                <textarea class="textarea-w-50" name="mensaje" id="mensaje"></textarea>
+                <textarea class="textarea-w-50" name="mensaje" id="mensaje" placeholder="Escriba los detalles de su reclamo"></textarea>
             </div>
         </fieldset>
         <button class="btn input-group">Levantar reclamo</button>

@@ -789,6 +789,7 @@ a.categoria {
     width: 50%;
     resize: none;
     min-height: 15rem;
+    padding: .8rem;
 }
 
 
