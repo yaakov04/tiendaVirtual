@@ -770,6 +770,28 @@ a.categoria {
 }
 
 
+/**reclamos**/
+
+.input-group {
+    margin-bottom: 2rem;
+}
+
+.input-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-column label {
+    margin-bottom: 1rem;
+}
+
+.textarea-w-50 {
+    width: 50%;
+    resize: none;
+    min-height: 15rem;
+}
+
+
 /**SubMenu**/
 
 .navegacion ul li {
