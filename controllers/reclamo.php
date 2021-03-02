@@ -36,4 +36,49 @@ class reclamo extends Controller{
         }
         
     }//
+
+    function solicitud_enviada(){
+        if (isset($_SESSION['login'])==true){
+            $this->view->render('reclamo/solicitud_enviada');
+        }else{
+            $controller= new Falla();
+            $controller->render();
+        }
+        
+    }
+
+    function levantarReclamo(){
+        $venta_id=filter_var($_POST['id_venta'], FILTER_VALIDATE_INT);
+        $pedido_id=filter_var($_POST['id_pedido'], FILTER_VALIDATE_INT);
+
+        if ($venta_id&&$pedido_id) {
+            $datos=array();
+            $consultaDB=$this->model->levantarReclamo($_SESSION['id']);
+            $datos['id_reclamo']=$consultaDB;
+            $consultaDB=$this->model->getNombreUsuario($_SESSION['id']);
+            $resultado=$consultaDB->fetch_assoc();
+            $datos['nombre']=$resultado['nombre'].' '.$resultado['apellido'];
+            $datos['correo']=$resultado['email'];  
+            $datos['asunto']=filter_var($_POST['Asunto'], FILTER_SANITIZE_STRING);
+            $datos['mensaje']=filter_var($_POST['mensaje'], FILTER_SANITIZE_STRING);
+            $datos['id_venta']=$venta_id;
+            $datos['id_pedido']=$pedido_id;
+            $consultaDB=$this->model->guardarMensaje($datos);
+            $respuesta=array(
+                'respuesta'=>$consultaDB,
+                'tipo'=>'levantarReclamo'
+            );
+            $consultaDB=$this->model->cambiarEstadoReclamo($venta_id);
+        }else{
+            $respuesta=array(
+                'respuesta'=>'error',
+                'mensaje'=>'id de venta o id de pedido no son validos'
+            );
+            die(json_encode($respuesta));
+        }
+
+
+
+        die(json_encode($respuesta));
+    }
 }

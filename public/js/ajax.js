@@ -8,6 +8,7 @@
         let btnAddWishlist = document.querySelector('#btn-add-wishlist-login');
         let btnLogout = document.querySelector('#logout');
         let btnPagar = document.querySelector('#btn-pagar-checkout');
+        let btnReclamo = document.querySelector('#btn-reclamo');
 
         listeners();
 
@@ -38,6 +39,9 @@
             }
             if (btnPagar) {
                 btnPagar.addEventListener('click', pagar)
+            }
+            if (btnReclamo) {
+                btnReclamo.addEventListener('click', reclamar);
             }
 
         } //listeners
@@ -92,6 +96,9 @@
                                     break
                                 case 'insertarPedido':
                                     redirecionar();
+                                    break
+                                case 'levantarReclamo':
+                                    exitoReclamar();
                                     break
                                 default:
                                     break;
@@ -337,6 +344,26 @@
             peticionAjax(controller, metodo, datos);
         }
 
+        function reclamar(e) {
+            e.preventDefault();
+            if (camposVaciosForm(btnReclamo)) {
+                notificacionError('no puede haber campos vacios', 200, 800);
+            } else {
+                let controller = 'reclamo';
+                let metodo = 'levantarReclamo';
+                let valores = obtenerValoresForm(btnReclamo);
+                //console.log(valores)
+                let datos = insertandoDatosFormData(valores);
+                obteniendoDatosTextarea(datos);
+                //console.log(...datos);
+                peticionAjax(controller, metodo, datos);
+            }
+        }
+
+        function exitoReclamar() {
+            window.location.href = "http://localhost/elPuestito/reclamo/solicitud_enviada";
+        }
+
 
         ///////////////////////////////////////////////////////////////
         //crea el formdata de los valores obtenidos de un formulario para el ajax
@@ -351,33 +378,52 @@
         function obtenerValoresForm(btn) {
             let formulario = btn.parentElement.parentElement;
             let inputs = formulario.querySelectorAll('input');
+            let selects = formulario.querySelectorAll('select');
             let arreglo = new Array();
             let valores = new Array();
             valores['llave'] = new Array();
             valores['valor'] = new Array();
-
             for (i = 0; i < inputs.length; i++) {
-                arreglo.push(inputs[i]);
-            }
-            //console.log(arreglo);
-            for (a = 0; a < arreglo.length; a++) {
-                if (arreglo[a].name === '') {
-
+                if (inputs[i].type == 'file') {
+                    continue;
                 } else {
-                    valores['llave'].push(arreglo[a].name);
-                    valores['valor'].push(arreglo[a].value);
+                    arreglo.push(inputs[i]);
                 }
-
             }
+            for (e = 0; e < selects.length; e++) {
+                arreglo.push(selects[e]);
+            }
+            for (a = 0; a < arreglo.length; a++) {
+                if (arreglo[a].name === '') {} else {
+                    if (arreglo[a].type == 'checkbox') {
+                        valores['llave'].push(arreglo[a].name);
+                        valores['valor'].push(arreglo[a].checked);
+                    } else {
+                        valores['llave'].push(arreglo[a].name);
+                        valores['valor'].push(arreglo[a].value);
+                    }
 
+                }
+            }
             return valores;
 
         }
+        //Obteniendo los valores del textarea y los inserta en el formdata
+        function obteniendoDatosTextarea(formdata) {
+            if (document.querySelectorAll('textarea').length > 0) {
+                let textArea = document.querySelectorAll('textarea')[0];
+                formdata.append(textArea.name, textArea.value);
+            }
+        } //function
         //comprueba si hay campos vacios en un formulario
         function camposVaciosForm(btn) {
             let formulario = btn.parentElement.parentElement;
-            let inputs = formulario.querySelectorAll('input');
+            let inputs = Array.prototype.slice.call(formulario.querySelectorAll('input'));
+            let selects = Array.prototype.slice.call(formulario.querySelectorAll('select'));
+            let textAreas = Array.prototype.slice.call(formulario.querySelectorAll('textarea'));
             let valor = false;
+            inputs = inputs.concat(selects);
+            inputs = inputs.concat(textAreas);
             //console.log(inputs);
             for (i = 0; i < inputs.length; i++) {
                 if (inputs[i].id == 'btn-registrarse') {
@@ -389,8 +435,9 @@
                         i = inputs.length + 1;
                     }
                 }
-            } //for
-            return valor
+            }
+
+            return valor;
         } //
         //Elimina el html del item y reinicia el calculo del total
         function eliminarArticuloCarritoHtml(btn) {
