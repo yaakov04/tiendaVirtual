@@ -522,6 +522,14 @@ section.contenedor h2 {
     color: var(--verdeFont);
 }
 
+.reclamo {
+    background-color: #e83f3f;
+}
+
+.reclamo i {
+    color: #da2c2c;
+}
+
 a.problema_pedido {
     position: relative;
 }

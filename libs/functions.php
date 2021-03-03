@@ -105,7 +105,9 @@ function paginadorAnterior($npaginas,$pSiguiente, $url){
 }
 
 function comprobarEstado($estadoActual, $estado){
-   
+   if ($estadoActual==6) {
+       return 'reclamo';
+   }
     if ($estadoActual>$estado||$estadoActual==$estado) {
         return 'completo';
     }
