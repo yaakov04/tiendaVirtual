@@ -8,6 +8,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="website-icon.png" />
     <script src="https://kit.fontawesome.com/471047becf.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@400;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
     <link rel="stylesheet" href="<?php echo URL; ?>public/style/normalize.css">
     <link rel="stylesheet" href="<?php echo URL; ?>public/style/style.css">
 </head>

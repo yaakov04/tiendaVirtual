@@ -192,3 +192,14 @@
 
     }); //DOM CONTENT LOADED
 })();
+
+//JQuery
+if (document.querySelector('#table_id')) {
+    $(function() {
+
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+
+    });
+}
