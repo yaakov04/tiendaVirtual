@@ -97,6 +97,21 @@ class reclamoModel{
         }
     
         return $respuesta;
+    }//
+
+    public function getReclamos($id){
+        try{
+            require 'config/conexion_bd.php';
+            $sql=" SELECT mensajes.id_pedido as pedido, mensajes.asunto as asunto, mensajes.id_reclamo as reclamo, mensajes.id_venta, reclamos.resuelto as resuelto, mensajes.fecha as fecha FROM mensajes ";
+            $sql.= " INNER JOIN reclamos ON mensajes.id_reclamo = reclamos.id ";
+            $sql.=" WHERE usuario_id = $id ORDER BY fecha ASC";
+            $resultado=$conexion->query($sql);
+            $conexion->close();
+            return $resultado;
+
+        }catch(Exception $e){
+            return 'Error '. $e;
+        }
     }
 
 

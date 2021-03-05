@@ -45,7 +45,29 @@ class reclamo extends Controller{
             $controller->render();
         }
         
-    }
+    }//
+
+    function lista(){
+        if (isset($_SESSION['login'])==true){
+            $consultaDB=$this->model->getReclamos($_SESSION['id']);
+            $this->view->reclamos=array();
+            while ($resultado=$consultaDB->fetch_assoc()) {
+                //comprobar si exite el reclamo
+                if (isset($this->view->reclamos[$resultado['reclamo']])) {
+                    //existe->No hagas nada
+                    continue;
+                }else{
+                    //¬existe->agregalo
+                    $this->view->reclamos[$resultado['reclamo']]=$resultado;
+                }
+            }
+            var_dump($this->view->reclamos);
+            $this->view->render('reclamo/lista');
+        }else{
+            $controller= new Falla();
+            $controller->render();
+        }
+    }//
 
     function levantarReclamo(){
         $venta_id=filter_var($_POST['id_venta'], FILTER_VALIDATE_INT);
