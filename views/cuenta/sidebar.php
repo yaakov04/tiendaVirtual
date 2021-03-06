@@ -6,5 +6,6 @@
         <a href="<?php echo URL.'listaPedidos?pagina=1' ?>">Ver pedidos</a>
         <a href="<?php echo URL.'wishlist' ?>">Ver wish list</a>
         <a href="<?php echo URL.'cuenta/cambiar_password' ?>">Cambiar contraseña</a>
+        <a href="<?php echo URL.'reclamo/lista' ?>">Reclamos</a>
     </nav>
 </aside>

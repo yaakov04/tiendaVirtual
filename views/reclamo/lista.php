@@ -20,7 +20,7 @@
 
                     <?php foreach ($this->reclamos as $reclamo) { ?>
                     <tr style="text-align:center;">
-                        <td><a style="color:blue" href="#"><?php echo $reclamo['reclamo'] ?></a></td>
+                        <td><a style="color:blue" href="<?php echo URL.'reclamo/ver/'.$reclamo['reclamo'] ?>"><?php echo $reclamo['reclamo'] ?></a></td>
                         <td><?php echo $reclamo['id_venta'] ?></td>
                         <td><?php echo $reclamo['pedido'] ?></td>
                         <td><?php echo $reclamo['asunto'] ?></td>

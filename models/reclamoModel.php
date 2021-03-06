@@ -113,6 +113,32 @@ class reclamoModel{
             return 'Error '. $e;
         }
     }
+    public function validarReclamo($id){
+        try{
+            require 'config/conexion_bd.php';
+            $sql=" SELECT id FROM reclamos WHERE id = $id AND usuario_id = ".$_SESSION['id'];
+            $resultado=$conexion->query($sql);
+            $conexion->close();
+            return $resultado;
+
+        }catch(Exception $e){
+            return 'Error '. $e;
+        }
+    }//
+    public function getReclamo($id){
+        try{
+            require 'config/conexion_bd.php';
+            $sql=" SELECT mensajes.id as id_mensaje,mensajes.id_pedido as pedido, mensajes.nombre as nombre, mensajes.correo as correo, mensajes.asunto as asunto, DATE(mensajes.fecha) as fecha, mensajes.leido as leido, mensajes.id_venta as venta, mensajes.mensaje as mensaje, mensajes.id_reclamo as reclamo, reclamos.resuelto as resuelto FROM mensajes ";
+            $sql.= " INNER JOIN reclamos ON mensajes.id_reclamo = reclamos.id ";
+            $sql.=" WHERE mensajes.id_reclamo =".$id. " AND reclamos.usuario_id =". $_SESSION['id'];
+            $resultado=$conexion->query($sql);
+            $conexion->close();
+            return $resultado;
+
+        }catch(Exception $e){
+            return 'Error '. $e;
+        }
+    }
 
 
 }//class
