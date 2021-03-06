@@ -9,6 +9,7 @@
         let btnLogout = document.querySelector('#logout');
         let btnPagar = document.querySelector('#btn-pagar-checkout');
         let btnReclamo = document.querySelector('#btn-reclamo');
+        let btnResponderMensaje = document.querySelector('#btn-responder');
 
         listeners();
 
@@ -42,6 +43,9 @@
             }
             if (btnReclamo) {
                 btnReclamo.addEventListener('click', reclamar);
+            }
+            if (btnResponderMensaje) {
+                btnResponderMensaje.addEventListener('click', responderMensaje);
             }
 
         } //listeners
@@ -99,6 +103,9 @@
                                     break
                                 case 'levantarReclamo':
                                     exitoReclamar();
+                                    break
+                                case 'responderMensaje':
+                                    exitoResponderMensaje('El mensaje se envio correctamente', respuesta.reclamo)
                                     break
                                 default:
                                     break;
@@ -362,6 +369,29 @@
 
         function exitoReclamar() {
             window.location.href = "http://localhost/elPuestito/reclamo/solicitud_enviada";
+        }
+
+        function responderMensaje(e) {
+            e.preventDefault();
+            if (camposVaciosForm(btnResponderMensaje)) {
+                notificacionError('no puede haber campos vacios', 200, 800);
+            } else {
+                let controller = 'reclamo';
+                let metodo = 'responderMensaje';
+                let valores = obtenerValoresForm(btnResponderMensaje);
+                //console.log(valores)
+                let datos = insertandoDatosFormData(valores);
+                obteniendoDatosTextarea(datos);
+                //console.log(...datos);
+                peticionAjax(controller, metodo, datos);
+            }
+        }
+
+        function exitoResponderMensaje(mensaje, reclamoID) {
+            notificacionCorrecto(mensaje, 100, 800);
+            setTimeout(() => {
+                window.location.href = `http://localhost/elPuestito/reclamo/ver/${reclamoID}`;
+            }, 1400);
         }
 
 

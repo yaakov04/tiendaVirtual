@@ -139,12 +139,14 @@ class reclamo extends Controller{
             $datos['id_reclamo']=$consultaDB;
             $consultaDB=$this->model->getNombreUsuario($_SESSION['id']);
             $resultado=$consultaDB->fetch_assoc();
+
             $datos['nombre']=$resultado['nombre'].' '.$resultado['apellido'];
             $datos['correo']=$resultado['email'];  
             $datos['asunto']=filter_var($_POST['Asunto'], FILTER_SANITIZE_STRING);
             $datos['mensaje']=filter_var($_POST['mensaje'], FILTER_SANITIZE_STRING);
             $datos['id_venta']=$venta_id;
             $datos['id_pedido']=$pedido_id;
+
             $consultaDB=$this->model->guardarMensaje($datos);
             $respuesta=array(
                 'respuesta'=>$consultaDB,
@@ -162,5 +164,54 @@ class reclamo extends Controller{
 
 
         die(json_encode($respuesta));
-    }
+    }//
+
+    function responderMensaje(){
+        $reclamos_id=filter_var($_POST['reclamos_id'], FILTER_VALIDATE_INT);
+        $venta_id=filter_var($_POST['venta_id'], FILTER_VALIDATE_INT);
+        $pedido_id=filter_var($_POST['pedido_id'], FILTER_VALIDATE_INT);
+        $respuesta_mensaje=filter_var($_POST['respuesta_mensaje'], FILTER_VALIDATE_INT);
+        $asunto=filter_var($_POST['asunto'], FILTER_SANITIZE_STRING);
+        $mensaje_nuevo=filter_var($_POST['mensaje'], FILTER_SANITIZE_STRING);
+        if ($reclamos_id&&$venta_id&&$pedido_id&&$respuesta_mensaje) {
+
+            //validando si existe reclamo
+            $consultaDB=$this->model->hayReclamo($reclamos_id, $venta_id, $pedido_id, $respuesta_mensaje);
+            if ($consultaDB->num_rows==1) {
+
+                $datos['id_reclamo']=$consultaDB;
+                $consultaDB=$this->model->getNombreUsuario($_SESSION['id']);
+                $resultado=$consultaDB->fetch_assoc();
+                $nombre = $resultado['nombre'].' '.$resultado['apellido'];
+                $correo=$resultado['email']; 
+               
+                //insertar en la BD
+                $consultaDB=$this->model->responderMensaje([
+                    'id_reclamo'    =>$reclamos_id,
+                    'id_venta'      =>$venta_id,
+                    'id_pedido'     =>$pedido_id,
+                    'nombre'        =>$nombre,
+                    'correo'        =>$correo,
+                    'asunto'        =>$asunto,
+                    'mensaje'       =>$mensaje_nuevo
+                ]);
+                $respuesta=array(
+                    'respuesta'=>$consultaDB,
+                    'tipo'=>'responderMensaje',
+                    'reclamo'=>$reclamos_id
+                );
+            }else{
+                $respuesta=array(
+                    'respuesta'=>'error'
+                );
+            }
+
+            
+        }else{
+            $respuesta=array(
+                'respuesta'=>'error'
+            );
+        }
+        die(json_encode($respuesta));
+    }//
 }

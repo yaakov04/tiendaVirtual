@@ -79,6 +79,27 @@ class reclamoModel{
         return $respuesta;
     }//
 
+    public function responderMensaje($datos){
+        try{
+            require 'config/conexion_bd.php';
+            $stmt = $conexion->prepare(" INSERT INTO mensajes (id_reclamo, id_venta, id_pedido, nombre, asunto, mensaje, correo) VALUES (?,?,?,?,?,?,?) ");
+            $stmt->bind_param("iiissss", $datos['id_reclamo'], $datos['id_venta'], $datos['id_pedido'], $datos['nombre'],  $datos['asunto'], $datos['mensaje'], $datos['correo']);
+            $stmt->execute();
+            
+            if($stmt->affected_rows > 0){
+                $respuesta='exito';
+            }else{
+                $respuesta='error';
+            }
+            $stmt->close();
+            $conexion->close();
+        }catch (Exception $e) {
+            echo 'error:' . $e;
+        }
+    
+        return $respuesta;
+    }
+
     public function cambiarEstadoReclamo($id_venta){
         try{
             require 'config/conexion_bd.php';
