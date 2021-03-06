@@ -813,6 +813,37 @@ a.categoria {
     background-color: white;
 }
 
+.card {
+    margin: 3rem 0;
+    border-radius: .5rem;
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.card__header,
+.card__footer {
+    padding: 1rem;
+}
+
+.card header,
+.card footer {
+    border-radius: .5rem;
+}
+
+.card__content {
+    padding: 1rem;
+}
+
+.mensaje p {
+    margin: 1rem 0;
+}
+
+p.mensaje__asunto {
+    margin-top: 3rem;
+    font-weight: bold;
+}
+
 
 /**SubMenu**/
 

@@ -4,7 +4,7 @@
 
     <?php foreach ($this->mensajes as $mensaje) {?>
 
-<div id="<?php echo 'mensaje_'.$mensaje['id_mensaje'] ?>" class="card card--width--all">
+<div id="<?php echo 'mensaje_'.$mensaje['id_mensaje'] ?>" class="card ">
     <header>
         <h2 class="card__header">Mensaje #<?php echo $mensaje['id_mensaje'] ?></h2>
     </header>
