@@ -22,13 +22,20 @@
             <p><?php echo $mensaje['mensaje'] ?></p>
         </div>
     </div>
-
+    <div class="reclamo-ver-btn-container">
+        <a class="btn" href="<?php echo 'http://localhost/elPuestito/reclamo/nuevo_mensaje?respuesta_mensaje='.$mensaje['id_mensaje'].
+                            '&reclamo_id='.$mensaje['reclamo'].'&venta_id='.$mensaje['venta'].'&pedido_id='.$mensaje['pedido'].'&asunto=Re:'.
+                            $mensaje['asunto'] ?>">Responder</a>
+        <a href="http://localhost/elPuestito/reclamo/lista" class="btn">Regressar</a>
+    </div>
     <footer>
         <p class="card__footer">Mensaje</p>
     </footer>
 </div>
 <!--.card-->
 <?php }//foreach ?>
+
+
     
 </main>
 <?php require 'views/footer.php';?>

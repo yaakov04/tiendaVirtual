@@ -97,6 +97,36 @@ class reclamo extends Controller{
             $controller->render();
         }
         
+    }//
+
+    function nuevo_mensaje(){
+        //validando el get
+        $respuesta_mensaje=filter_var($_GET['respuesta_mensaje'], FILTER_VALIDATE_INT);
+        $reclamos_id=filter_var($_GET['reclamo_id'], FILTER_VALIDATE_INT);
+        $venta_id=filter_var($_GET['venta_id'], FILTER_VALIDATE_INT);
+        $pedido_id=filter_var($_GET['pedido_id'], FILTER_VALIDATE_INT);
+        $asunto=filter_var($_GET['asunto'], FILTER_SANITIZE_STRING);
+        if ($respuesta_mensaje&&$reclamos_id&&$venta_id&&$pedido_id) {
+            //validando si existe reclamo
+            $consultaDB=$this->model->hayReclamo($reclamos_id, $venta_id, $pedido_id, $respuesta_mensaje);
+            if ($consultaDB->num_rows==1) {
+                $this->view->datos=array(
+                    'reclamos_id'       =>$reclamos_id,
+                    'venta_id'          =>$venta_id,
+                    'pedido_id'         =>$pedido_id,
+                    'respuesta_mensaje' =>$respuesta_mensaje,
+                    'asunto'            =>$asunto
+                );
+                $this->view->render('reclamo/nuevo_mensaje');
+            }else{
+                $controller= new Falla();
+                $controller->render();
+            }
+            
+        }else{
+            $controller= new Falla();
+            $controller->render();
+        }
     }
 
     function levantarReclamo(){

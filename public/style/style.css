@@ -844,6 +844,15 @@ p.mensaje__asunto {
     font-weight: bold;
 }
 
+.reclamo-ver-btn-container {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.reclamo-ver-btn-container .btn {
+    color: white;
+}
+
 
 /**SubMenu**/
 

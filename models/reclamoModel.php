@@ -138,7 +138,20 @@ class reclamoModel{
         }catch(Exception $e){
             return 'Error '. $e;
         }
-    }
+    }//
+
+    public function hayReclamo($reclamos_id, $venta_id, $pedido_id, $respuesta_mensaje){
+        try{
+            require 'config/conexion_bd.php';
+            $sql= " SELECT mensajes.id as id_mensajes, reclamos.id as id_reclamos FROM  `mensajes` INNER JOIN reclamos ON mensajes.id_reclamo = reclamos.id WHERE mensajes.id_reclamo = $reclamos_id AND mensajes.id_venta = $venta_id AND mensajes.id_pedido = $pedido_id AND mensajes.id = $respuesta_mensaje AND reclamos.usuario_id = ".$_SESSION['id'];
+            $resultado = $conexion->query($sql);
+            $conexion->close();
+            return $resultado;
+        }catch (Exception $e) {
+            echo 'error:' . $e;
+        }
+        return $resultado;
+    }//
 
 
 }//class
