@@ -868,6 +868,7 @@ p.mensaje__asunto {
     border-radius: .8rem;
     left: -5.2rem;
     top: 4.5rem;
+    z-index: 10;
     transition: all .5s ease-in-out;
     -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
