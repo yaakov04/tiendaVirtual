@@ -4,14 +4,16 @@
 
         <?php while ($pedido=$this->pedidos->fetch_assoc()) { ?>
         <div class="producto contenedor-flex">
-        
             <div class="img"><img src="<?php echo URL.'public/img/img_productos/'.$pedido['img_producto'] ?>" alt="joystick"></div>
             <div class="detalles-producto">
                 <div class="encabezado contenedor-flex detalles-encabezado">
                     <div class="contenedor-txt">
-                        <h3><?php echo $pedido['nombre_producto'] ?></h3>
+                        <a href="<?php echo URL.'listaPedidos/detallesPedido/'.$pedido['venta_id'] ?>">
+                            <h3><?php echo $pedido['nombre_producto'] ?></h3>
+                        </a>
                     </div>
                     <div class="contenedor-txt">
+                    <p class="text-strong ">Numero de pedido: <?php echo $pedido['id_pedido'] ?></p>
                         <p class="text-strong ">x<?php echo $pedido['cantidad'] ?></p>
                         
                         

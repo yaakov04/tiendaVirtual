@@ -42,7 +42,9 @@ class App{
                     $controller->{$url[1]}();
                 }
             }else{
+                    
                 $controller->render();
+                
             }
 
             /*//carga el metodo

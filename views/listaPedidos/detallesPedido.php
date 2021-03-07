@@ -1,10 +1,10 @@
 <?php require 'views/header.php';?>
 <main class="contenedor pagina-detalles-pedido">
-        <h2>Detalles del pedido</h2>
+        <h2>Detalles de la venta</h2>
         <div class="detalles-contenedor contenedor-flex">
             <div class="detalles">
                 <p><span class="text-strong">Fecha de compra:</span> 11 de octubre de 2020</p>
-                <p><span class="text-strong">Numero de pedido:</span> 123456789</p>
+                <p><span class="text-strong">Numero de venta:</span> 123456789</p>
                 <p><span class="text-strong">ID de compra:</span> 123456789</p>
                 <h3><span class="text-strong">Direccion de envio</span></h3>
                 <p><span class="text-strong">Destinatario:</span> Jacob de Canterbury</p>
@@ -31,7 +31,8 @@
             </div>
 
         </div>
-        <div class="producto contenedor-flex">
+        <div class="contenedor-flex flex-align-items flex-column">
+        <div class="producto contenedor-flex width-700">
             <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
             <div class="detalles-producto">
                 <div class="encabezado contenedor-flex detalles-encabezado">
@@ -45,27 +46,12 @@
                     </div>
 
                 </div>
-                <div class="estados contenedor-flex">
-
-                    <div class="estado completo">
-                        <p>Procesando envio</p>
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <div class="estado completo">
-                        <p>Enviado</p>
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <div class="estado">
-                        <p>Entregado</p>
-                        <i class="fas fa-check-square"></i>
-                    </div>
-
-                </div>
+              
             </div>
         </div>
         <!--./producto-->
 
-        <div class="producto contenedor-flex">
+        <div class="producto contenedor-flex width-700">
             <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
             <div class="detalles-producto">
                 <div class="encabezado contenedor-flex detalles-encabezado">
@@ -79,27 +65,12 @@
                     </div>
 
                 </div>
-                <div class="estados contenedor-flex">
-
-                    <div class="estado completo">
-                        <p>Procesando envio</p>
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <div class="estado ">
-                        <p>Enviado</p>
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <div class="estado">
-                        <p>Entregado</p>
-                        <i class="fas fa-check-square"></i>
-                    </div>
-
-                </div>
+               
             </div>
         </div>
         <!--./producto-->
 
-        <div class="producto contenedor-flex">
+        <div class="producto contenedor-flex width-700">
             <div class="img"><img src="img/joystick.jpg" alt="joystick"></div>
             <div class="detalles-producto">
                 <div class="encabezado contenedor-flex detalles-encabezado">
@@ -113,26 +84,11 @@
                     </div>
 
                 </div>
-                <div class="estados contenedor-flex">
-
-                    <div class="estado completo">
-                        <p>Procesando envio</p>
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <div class="estado ">
-                        <p>Enviado</p>
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <div class="estado">
-                        <p>Entregado</p>
-                        <i class="fas fa-check-square"></i>
-                    </div>
-
-                </div>
+                
             </div>
         </div>
         <!--./producto-->
-
+        </div>
 
     </main>
 <?php require 'views/footer.php';?>

@@ -40,6 +40,29 @@ class ListaPedidos extends Controller{
             $controller= new Falla();
             $controller->render();
         }
+    }//
+
+    function detallesPedido($param){
+        
+        $id_venta=filter_var($param[0], FILTER_VALIDATE_INT);
+        //validar get
+        if ($id_venta) {
+            //validar id_venta
+            $consultaDB=$this->model->existeVenta($id_venta);
+            if ($consultaDB->num_rows==1) {
+                $consultaDB=$this->model->getVentaPedidos($id_venta);
+                var_dump($consultaDB);
+                while ($resultado=$consultaDB->fetch_assoc()) {
+                    var_dump($resultado);
+                }
+                $this->view->render('listaPedidos/detallesPedido');
+            }
+            
+        }else{
+            $controller= new Falla();
+            $controller->render();
+        }
+        
     }
     
 
