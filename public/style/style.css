@@ -454,6 +454,10 @@ section.contenedor h2 {
 
 /**Detalles pedido**/
 
+.detallesProducto-producto {
+    margin: 1.5rem 0;
+}
+
 .text-strong {
     font-weight: bold;
 }

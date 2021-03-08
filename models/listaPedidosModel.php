@@ -55,10 +55,11 @@ class listaPedidosModel{
     public function getVentaPedidos($id){
         try{
             require 'config/conexion_bd.php';
-            $sql= " SELECT DATE(ventas.fecha) as fecha, ventas.id as venta_id, usuarios.id as comprador, ventas.destinatario as destinatario, ventas.datos_envio as direccion, pedidos.id as pedido_id, productos.nombre_producto as nombre_producto, pedidos.cantidad as cantidad_producto, pedidos.precio as precio_producto, pedidos.total as total_pedido, ventas.estatus as estatus FROM ventas ";
+            $sql= " SELECT DATE(ventas.fecha) as fecha, ventas.id as venta_id, usuarios.id as comprador, ventas.destinatario as destinatario, ventas.datos_envio as direccion, pedidos.id as pedido_id, productos.nombre_producto as nombre_producto, productos.img_producto as img_producto, pedidos.cantidad as cantidad_producto, pedidos.precio as precio_producto, pedidos.total as total_pedido, estados.estado as estatus FROM ventas ";
             $sql.=" INNER JOIN usuarios ON ventas.id_cliente = usuarios.id ";
             $sql.=" INNER JOIN pedidos ON pedidos.id_venta = ventas.id ";
             $sql.=" INNER JOIN productos ON pedidos.id_producto = productos.id ";
+            $sql.=" INNER JOIN estados ON ventas.estatus = estados.id ";
             $sql.=" WHERE ventas.id_cliente = ".$_SESSION['id'];
             $sql.=" AND pedidos.id_venta = ".$id;
             $resultado = $conexion->query($sql);

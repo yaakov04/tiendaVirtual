@@ -13,6 +13,13 @@ if (document.querySelector('#btn-pagar-checkout')) {
     }
 }
 
+if (document.querySelector('.detallesProducto-productos')) {
+    let pedidos = document.querySelectorAll('.producto');
+    if (pedidos.length > 0) {
+        totalCarrito(pedidos, tenerCantidadDetallesPedido, tenerPrecioDetallesPedido);
+    }
+}
+
 function totalCarrito(carrito, tenerCantidad, tenerPrecio) {
     let listaItems = document.querySelectorAll('.producto');
     let precios = null;
@@ -63,4 +70,14 @@ function tenerCantidadCheckout(listaItems, i) {
     let cantidad = listaItems[i].children[1].children[0].children[1].children[0].innerText;
     cantidad = parseFloat(cantidad.replace('X', ''));
     return cantidad;
+}
+
+function tenerCantidadDetallesPedido(listaItems, i) {
+    let cantidad = listaItems[i].children[1].children[0].children[1].children[2].value
+    return cantidad;
+}
+
+function tenerPrecioDetallesPedido(listaItems, i) {
+    let precio = listaItems[i].children[1].children[0].children[1].children[3].value;
+    return precio;
 }
