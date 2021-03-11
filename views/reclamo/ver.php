@@ -1,5 +1,5 @@
 <?php require 'views/header.php';?>
-<main style="min-height:46vh;" class="contenedor">
+<main style="min-height:46vh; position:relative;" class="contenedor">
     <h2>Mensajes del reclamo</h2>
 
     <?php foreach ($this->mensajes as $mensaje) {?>
@@ -22,19 +22,25 @@
             <p><?php echo $mensaje['mensaje'] ?></p>
         </div>
     </div>
-    <div class="reclamo-ver-btn-container">
-        <a class="btn" href="<?php echo 'http://localhost/elPuestito/reclamo/nuevo_mensaje?respuesta_mensaje='.$mensaje['id_mensaje'].
-                            '&reclamo_id='.$mensaje['reclamo'].'&venta_id='.$mensaje['venta'].'&pedido_id='.$mensaje['pedido'].'&asunto=Re:'.
-                            $mensaje['asunto'] ?>">Responder</a>
-        <a href="http://localhost/elPuestito/reclamo/lista" class="btn">Regressar</a>
-        <button class="btn" data-id-mensaje="<?php echo $mensaje['id_mensaje'] ?>" data-id-venta="<?php echo $mensaje['venta'] ?>" data-id-pedido="<?php echo $mensaje['pedido'] ?>" data-id-reclamo="<?php echo $mensaje['reclamo'] ?>" id="btn-resolverReclamo">Resolver reclamo</button>
-    </div>
+    
     <footer>
         <p class="card__footer">Mensaje</p>
     </footer>
 </div>
 <!--.card-->
 <?php }//foreach ?>
+
+
+<div class="panel-opciones">
+
+<div class="reclamo-ver-btn-container">
+        <a class="btn" href="<?php echo 'http://localhost/elPuestito/reclamo/nuevo_mensaje?reclamo_id='.$mensaje['reclamo'].'&venta_id='.$mensaje['venta'].'&pedido_id='.$mensaje['pedido'].'&asunto='.
+                            $mensaje['asunto'] ?>">Responder</a>
+        <a href="http://localhost/elPuestito/reclamo/lista" class="btn">Regresar</a>
+        <button class="btn" data-id-mensaje="<?php echo $mensaje['id_mensaje'] ?>" data-id-venta="<?php echo $mensaje['venta'] ?>" data-id-pedido="<?php echo $mensaje['pedido'] ?>" data-id-reclamo="<?php echo $mensaje['reclamo'] ?>" id="btn-resolverReclamo">Resolver reclamo</button>
+    </div>
+
+</div>
 
 
     

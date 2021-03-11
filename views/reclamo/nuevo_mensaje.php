@@ -12,8 +12,7 @@
             <input type="hidden" name="reclamos_id" value="<?php echo $this->datos['reclamos_id'] ?>">
                 <input type="hidden" name="venta_id" value="<?php echo $this->datos['venta_id'] ?>">
                 <input type="hidden" name="pedido_id" value="<?php echo $this->datos['pedido_id'] ?>">
-                <input type="hidden" name="respuesta_mensaje" value="<?php echo $this->datos['respuesta_mensaje'] ?>">
-                <input type="hidden" name="asunto" value="<?php echo $this->datos['asunto'].' - Respuesta a mensaje #'.$this->datos['respuesta_mensaje'] ?>">
+                <input type="hidden" name="asunto" value="<?php echo $this->datos['asunto'].' - Re' ?>">
             <button id="btn-responder" class="btn input-group">Responder</button>
             <a href="<?php echo URL.'reclamo/ver/'.$this->datos['reclamos_id'] ?>">Cancelar</a>
         </fieldset>

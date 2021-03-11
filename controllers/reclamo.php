@@ -101,20 +101,18 @@ class reclamo extends Controller{
 
     function nuevo_mensaje(){
         //validando el get
-        $respuesta_mensaje=filter_var($_GET['respuesta_mensaje'], FILTER_VALIDATE_INT);
         $reclamos_id=filter_var($_GET['reclamo_id'], FILTER_VALIDATE_INT);
         $venta_id=filter_var($_GET['venta_id'], FILTER_VALIDATE_INT);
         $pedido_id=filter_var($_GET['pedido_id'], FILTER_VALIDATE_INT);
         $asunto=filter_var($_GET['asunto'], FILTER_SANITIZE_STRING);
-        if ($respuesta_mensaje&&$reclamos_id&&$venta_id&&$pedido_id) {
+        if ($reclamos_id&&$venta_id&&$pedido_id) {
             //validando si existe reclamo
-            $consultaDB=$this->model->hayReclamo($reclamos_id, $venta_id, $pedido_id, $respuesta_mensaje);
-            if ($consultaDB->num_rows==1) {
+           $consultaDB=$this->model->hayReclamo($reclamos_id, $venta_id, $pedido_id);
+            if ($consultaDB->num_rows>0) {
                 $this->view->datos=array(
                     'reclamos_id'       =>$reclamos_id,
                     'venta_id'          =>$venta_id,
                     'pedido_id'         =>$pedido_id,
-                    'respuesta_mensaje' =>$respuesta_mensaje,
                     'asunto'            =>$asunto
                 );
                 $this->view->render('reclamo/nuevo_mensaje');
@@ -170,22 +168,24 @@ class reclamo extends Controller{
         $reclamos_id=filter_var($_POST['reclamos_id'], FILTER_VALIDATE_INT);
         $venta_id=filter_var($_POST['venta_id'], FILTER_VALIDATE_INT);
         $pedido_id=filter_var($_POST['pedido_id'], FILTER_VALIDATE_INT);
-        $respuesta_mensaje=filter_var($_POST['respuesta_mensaje'], FILTER_VALIDATE_INT);
         $asunto=filter_var($_POST['asunto'], FILTER_SANITIZE_STRING);
         $mensaje_nuevo=filter_var($_POST['mensaje'], FILTER_SANITIZE_STRING);
-        if ($reclamos_id&&$venta_id&&$pedido_id&&$respuesta_mensaje) {
+        if ($reclamos_id&&$venta_id&&$pedido_id) {
 
             //validando si existe reclamo
-            $consultaDB=$this->model->hayReclamo($reclamos_id, $venta_id, $pedido_id, $respuesta_mensaje);
-            if ($consultaDB->num_rows==1) {
+            $consultaDB=$this->model->hayReclamo($reclamos_id, $venta_id, $pedido_id);
+            if ($consultaDB->num_rows>0) {
 
-                $datos['id_reclamo']=$consultaDB;
+                
+                $datos['id_reclamo']=$consultaDB->fetch_assoc()['id_reclamos'];
                 $consultaDB=$this->model->getNombreUsuario($_SESSION['id']);
                 $resultado=$consultaDB->fetch_assoc();
                 $nombre = $resultado['nombre'].' '.$resultado['apellido'];
                 $correo=$resultado['email']; 
+                
                
                 //insertar en la BD
+                
                 $consultaDB=$this->model->responderMensaje([
                     'id_reclamo'    =>$reclamos_id,
                     'id_venta'      =>$venta_id,
@@ -218,17 +218,17 @@ class reclamo extends Controller{
         $id_reclamo = filter_var($_POST['id_reclamo'], FILTER_VALIDATE_INT);
         $id_pedido = filter_var($_POST['id_pedido'], FILTER_VALIDATE_INT);
         $id_venta = filter_var($_POST['id_venta'], FILTER_VALIDATE_INT);
-        $id_mensaje = filter_var($_POST['id_venta'], FILTER_VALIDATE_INT);
-        if ($id_reclamo&&$id_pedido&&$id_venta&&$id_mensaje) {
+        if ($id_reclamo&&$id_pedido&&$id_venta) {
             //validar si existe reclamo
             $consultaDB=$this->model->hayReclamo($id_reclamo, $id_venta, $id_pedido);
-            if ($consultaDB->num_rows==1) {
+            if ($consultaDB->num_rows>0) {
                 $consultaDB=$this->model->resolverEstadoReclamo($id_venta);
                 if ($consultaDB=='exito') {
                     $consultaDB=$this->model->resolverReclamo($id_reclamo);
                     $respuesta=array(
                         'respuesta'=>$consultaDB,
-                        'post' =>$_POST
+                        'tipo'=>'resolverReclamo',
+                        'reclamo'=>$id_reclamo
                     );
                 }else{
                     $respuesta=array(

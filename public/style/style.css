@@ -422,7 +422,8 @@ section.contenedor h2 {
     text-align: left;
 }
 
-.resumen-contenedor {
+.resumen-contenedor,
+.panel-opciones {
     background-color: var(--verdeOscuro);
     color: #ffffff;
 }
@@ -835,6 +836,7 @@ a.categoria {
     -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    margin-bottom: 8rem;
 }
 
 .card__header,
@@ -862,11 +864,21 @@ p.mensaje__asunto {
 
 .reclamo-ver-btn-container {
     padding: 1rem;
-    margin-bottom: 1.5rem;
 }
 
-.reclamo-ver-btn-container .btn {
-    color: white;
+.panel-opciones {
+    width: 100%;
+    max-width: 900px;
+    position: fixed;
+    bottom: 83px;
+    border-radius: .5rem;
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.panel-opciones .btn {
+    background-color: var(--verdePrimario);
 }
 
 

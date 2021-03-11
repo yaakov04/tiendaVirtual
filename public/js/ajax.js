@@ -71,6 +71,9 @@
 
                         if (respuesta.respuesta == 'exito') {
                             switch (respuesta.tipo) {
+                                case 'resolverReclamo':
+                                    exitoResolverReclamo('El reclamo se resolvio');
+                                    break
                                 case 'regitrar':
                                     exitoRegistrarse();
                                     break;
@@ -109,8 +112,9 @@
                                     exitoReclamar();
                                     break
                                 case 'responderMensaje':
-                                    exitoResponderMensaje('El mensaje se envio correctamente', respuesta.reclamo)
+                                    exitoResponderMensaje('El mensaje se envio correctamente', respuesta.reclamo);
                                     break
+
                                 default:
                                     break;
                             }
@@ -414,6 +418,14 @@
 
             peticionAjax(controller, metodo, datos);
 
+        }
+
+        function exitoResolverReclamo(mensaje) {
+            console.log('hyat');
+            notificacionCorrecto(mensaje, 100, 800);
+            setTimeout(() => {
+                window.location.href = `http://localhost/elPuestito/reclamo/lista`;
+            }, 1400);
         }
         ///////////////////////////////////////////////////////////////
         //crea el formdata de los valores obtenidos de un formulario para el ajax
