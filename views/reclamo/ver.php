@@ -27,6 +27,7 @@
                             '&reclamo_id='.$mensaje['reclamo'].'&venta_id='.$mensaje['venta'].'&pedido_id='.$mensaje['pedido'].'&asunto=Re:'.
                             $mensaje['asunto'] ?>">Responder</a>
         <a href="http://localhost/elPuestito/reclamo/lista" class="btn">Regressar</a>
+        <button class="btn" data-id-mensaje="<?php echo $mensaje['id_mensaje'] ?>" data-id-venta="<?php echo $mensaje['venta'] ?>" data-id-pedido="<?php echo $mensaje['pedido'] ?>" data-id-reclamo="<?php echo $mensaje['reclamo'] ?>" id="btn-resolverReclamo">Resolver reclamo</button>
     </div>
     <footer>
         <p class="card__footer">Mensaje</p>

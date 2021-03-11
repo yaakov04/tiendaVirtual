@@ -161,10 +161,10 @@ class reclamoModel{
         }
     }//
 
-    public function hayReclamo($reclamos_id, $venta_id, $pedido_id, $respuesta_mensaje){
+    public function hayReclamo($reclamos_id, $venta_id, $pedido_id){
         try{
             require 'config/conexion_bd.php';
-            $sql= " SELECT mensajes.id as id_mensajes, reclamos.id as id_reclamos FROM  `mensajes` INNER JOIN reclamos ON mensajes.id_reclamo = reclamos.id WHERE mensajes.id_reclamo = $reclamos_id AND mensajes.id_venta = $venta_id AND mensajes.id_pedido = $pedido_id AND mensajes.id = $respuesta_mensaje AND reclamos.usuario_id = ".$_SESSION['id'];
+            $sql= " SELECT mensajes.id as id_mensajes, reclamos.id as id_reclamos FROM  `mensajes` INNER JOIN reclamos ON mensajes.id_reclamo = reclamos.id WHERE mensajes.id_reclamo = $reclamos_id AND mensajes.id_venta = $venta_id AND mensajes.id_pedido = $pedido_id AND reclamos.usuario_id = ".$_SESSION['id'];
             $resultado = $conexion->query($sql);
             $conexion->close();
             return $resultado;
@@ -172,6 +172,45 @@ class reclamoModel{
             echo 'error:' . $e;
         }
         return $resultado;
+    }//
+    
+    public function resolverEstadoReclamo($id){
+        try{
+            require 'config/conexion_bd.php';
+            $stmt = $conexion->prepare(" UPDATE `ventas` SET `estatus` = 7 WHERE `ventas`.`id` = ? ");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            if ($stmt->affected_rows==1) {
+                $respuesta = 'exito';
+            }else{
+                $respuesta= 'error';
+            }
+            $stmt->close();
+            $conexion->close();
+        }catch (Exception $e) {
+            echo 'error:' . $e;
+        }
+    
+        return $respuesta;
+    }//
+    public function resolverReclamo($id){
+        try{
+            require 'config/conexion_bd.php';
+            $stmt = $conexion->prepare(" UPDATE `reclamos` SET `resuelto` = 1 WHERE `reclamos`.`id` = ? ");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            if ($stmt->affected_rows==1) {
+                $respuesta = 'exito';
+            }else{
+                $respuesta= 'error';
+            }
+            $stmt->close();
+            $conexion->close();
+        }catch (Exception $e) {
+            echo 'error:' . $e;
+        }
+    
+        return $respuesta;
     }//
 
 

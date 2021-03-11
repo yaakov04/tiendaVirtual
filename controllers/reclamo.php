@@ -214,4 +214,40 @@ class reclamo extends Controller{
         }
         die(json_encode($respuesta));
     }//
+    function resolverReclamo(){
+        $id_reclamo = filter_var($_POST['id_reclamo'], FILTER_VALIDATE_INT);
+        $id_pedido = filter_var($_POST['id_pedido'], FILTER_VALIDATE_INT);
+        $id_venta = filter_var($_POST['id_venta'], FILTER_VALIDATE_INT);
+        $id_mensaje = filter_var($_POST['id_venta'], FILTER_VALIDATE_INT);
+        if ($id_reclamo&&$id_pedido&&$id_venta&&$id_mensaje) {
+            //validar si existe reclamo
+            $consultaDB=$this->model->hayReclamo($id_reclamo, $id_venta, $id_pedido);
+            if ($consultaDB->num_rows==1) {
+                $consultaDB=$this->model->resolverEstadoReclamo($id_venta);
+                if ($consultaDB=='exito') {
+                    $consultaDB=$this->model->resolverReclamo($id_reclamo);
+                    $respuesta=array(
+                        'respuesta'=>$consultaDB,
+                        'post' =>$_POST
+                    );
+                }else{
+                    $respuesta=array(
+                        'respuesta'=>'error'
+                    );
+                }
+                
+
+            }else{
+                $respuesta=array(
+                    'respuesta'=>'error'
+                );
+            }
+        }else{
+            $respuesta=array(
+                'mensaje'=>'id no valido',
+                'respuesta'=>'error'
+            );
+        }
+        die(json_encode($respuesta));
+    }
 }

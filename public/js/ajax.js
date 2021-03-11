@@ -10,6 +10,7 @@
         let btnPagar = document.querySelector('#btn-pagar-checkout');
         let btnReclamo = document.querySelector('#btn-reclamo');
         let btnResponderMensaje = document.querySelector('#btn-responder');
+        let btnResolverReclamo = document.querySelector('#btn-resolverReclamo');
 
         listeners();
 
@@ -46,6 +47,9 @@
             }
             if (btnResponderMensaje) {
                 btnResponderMensaje.addEventListener('click', responderMensaje);
+            }
+            if (btnResolverReclamo) {
+                btnResolverReclamo.addEventListener('click', resolverReclamo)
             }
 
         } //listeners
@@ -394,7 +398,23 @@
             }, 1400);
         }
 
+        function resolverReclamo(e) {
+            e.preventDefault();
+            let id_reclamo = btnResolverReclamo.getAttribute('data-id-reclamo');
+            let id_venta = btnResolverReclamo.getAttribute('data-id-venta');
+            let id_pedido = btnResolverReclamo.getAttribute('data-id-pedido');
+            let id_mensaje = btnResolverReclamo.getAttribute('data-id-mensaje');
+            let controller = 'reclamo';
+            let metodo = 'resolverReclamo';
+            let datos = new FormData;
+            datos.append('id_reclamo', id_reclamo);
+            datos.append('id_venta', id_venta);
+            datos.append('id_pedido', id_pedido);
+            datos.append('id_mensaje', id_mensaje);
 
+            peticionAjax(controller, metodo, datos);
+
+        }
         ///////////////////////////////////////////////////////////////
         //crea el formdata de los valores obtenidos de un formulario para el ajax
         function insertandoDatosFormData(valores) {
