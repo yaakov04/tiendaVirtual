@@ -35,5 +35,6 @@ Imagenes de muestra
   <img src="https://raw.githubusercontent.com/yaakov04/tiendaVirtual/main/imagenes_muestra/FireShot%20Capture%20084%20-%20El%20Puestito%20-%20localhost.png" width="400">
   <img src="https://raw.githubusercontent.com/yaakov04/tiendaVirtual/main/imagenes_muestra/FireShot%20Capture%20087%20-%20El%20Puestito%20-%20localhost.png" width="400">
   <img src="https://raw.githubusercontent.com/yaakov04/tiendaVirtual/main/imagenes_muestra/FireShot%20Capture%20090%20-%20El%20Puestito%20-%20localhost.png" width="400">
+  <img src="https://raw.githubusercontent.com/yaakov04/tiendaVirtual/main/imagenes_muestra/Captura%20de%20pantalla%20de%202021-04-03%2008-37-10.png" width="400">
   <div>
 
