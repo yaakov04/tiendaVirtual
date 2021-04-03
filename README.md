@@ -1,4 +1,4 @@
-# tiendaVirtual
+# TiendaVirtual
 Practica de tienda virtual con php
 
 <img src="https://raw.githubusercontent.com/yaakov04/tiendaVirtual/main/imagenes_muestra/FireShot%20Capture%20043%20-%20El%20Puestito%20-%20localhost.png" width="400">
@@ -8,6 +8,7 @@ Las vistas estan contruidas con HTML, CSS y Javascript; y se muestran con PHP.
 El sitio implementa:
 + Sesiones, el usuario se puede registrar e iniciar sesión.
 + Formularios, para registrarse, iniciar sesion, editar los datos del usuario, hacer reclamos, etc.
++ Ajax para las interacciones con la base de datos 
 + Un carrito de compras con PHP, solo se puede usar si el usuario esta registrado e inicia sesión.
 + Un Wishlist con PHP.
 + Ventanas modales con Javascript que se muestran de acuerdo a las acciones del usuario.
